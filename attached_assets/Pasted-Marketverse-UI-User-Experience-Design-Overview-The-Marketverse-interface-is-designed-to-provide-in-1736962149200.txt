@@ -1,0 +1,143 @@
+Marketverse UI & User Experience Design
+Overview
+The Marketverse interface is designed to provide intuitive access to trading, agent management, and competition features while maintaining the game's core narrative of AI-driven market chaos.
+Core Screens & Functionality
+1. Dashboard Screen
+Copy[Header]
+- Marketverse Logo & Theme
+- Wallet Connection Status
+- AOBucks Balance: 10,000
+- Season/Week Counter
+
+[Quick Stats]
+- Active Agents: 3
+- Total Portfolio Value
+- 24h Performance
+- Oracle Event Alerts
+
+[Navigation]
+Markets | My Agents | Leaderboard | Profile
+Functionality:
+
+Real-time balance updates
+Oracle event notifications
+Quick trade access
+Portfolio overview
+
+2. Markets Screen
+Copy[Market Overview]
+ASSET       PRICE    24H      VOLUME    MY POSITION
+MemeGold    12.50    +5.2%    125K      200 MGLD
+MemeOil     2.31     +12.5%   230K      1000 MOIL
+MemeCorn    1.15     -3.1%    89K       50 MCRN
+MemeCoffee  0.85     +1.2%    45K       0 MCOF
+
+[Asset Detail Card - Expanded View]
+MemeGold (MGLD)
+------------------------
+Price: 12.50 AOBucks
+24h Change: +5.2% ↑
+Volume: 125K AOBucks
+Supply: 10K/100K
+[Price Chart]
+[Buy] [Sell]
+Functionality:
+
+Live price updates
+Interactive charts
+Trading interface
+Market depth visualization
+
+3. Agent Creation & Management
+Copy[Agent Creation]
+Step 1: Select Template
+- DCA Trader
+- Momentum Hunter
+- Value Seeker
+- Trend Follower
+
+Step 2: Configure Strategy
+- Risk Tolerance: [Slider 1-10]
+- Trading Frequency: [Slider 1-10]
+- Asset Preferences: [Multi-select]
+- Position Size: [Slider 1-10]
+
+Step 3: Deployment
+- Agent Name: [Input]
+- Initial AOBucks: [Input]
+- Strategy Preview
+- [Deploy Agent]
+
+[Active Agents Dashboard]
+AGENT NAME    STRATEGY    PROFIT/LOSS   STATUS
+GoldHunter    Momentum    +367%         Active
+OilTrader     DCA         +123%         Active
+Functionality:
+
+Template selection
+Strategy configuration
+Performance monitoring
+Agent management
+
+4. Leaderboard Screen
+Copy[Season Banner]
+SEASON 1: WEEK 3 | Time Remaining: 2D 14H 23M
+
+[Leaderboard Filters]
+Daily | Weekly | All-Time
+Top Agents | Most Profitable | Most Active
+
+[Rankings]
+RANK  AGENT NAME    PROFIT/LOSS   24H CHANGE   STRATEGY
+#1    TrendRider    +482%        ↑ 23%        Momentum
+#2    GoldHunter    +367%        ↓ 5%         Value
+#3    OilWhale      +298%        ↑ 12%        DCA
+
+[Stats Panel]
+- Active Agents: 142
+- Total Volume: 1.2M AOBucks
+- Most Traded: MemeOil
+- Biggest Trade: 50K AOBucks
+Functionality:
+
+Real-time rankings
+Performance metrics
+Strategy insights
+Social sharing
+
+User Journeys
+1. New Player Experience
+
+Connect wallet
+Receive 10,000 AOBucks
+Complete optional tutorial
+Create first agent or make manual trade
+
+2. Regular Trader Flow
+
+Check dashboard for market updates
+Monitor active positions
+Respond to Oracle events
+Adjust trading strategy
+
+3. Agent Creator Path
+
+Analyze market conditions
+Select and configure agent template
+Deploy agent with initial capital
+Monitor and adjust performance
+
+4. Competition Focus
+
+Review leaderboard standings
+Study successful strategies
+Optimize agent parameters
+Track progress toward top rankings
+
+Key Features
+
+Real-time price updates from bonding curves
+Oracle event integration
+Agent performance tracking
+Interactive trading interface
+Social competition elements
