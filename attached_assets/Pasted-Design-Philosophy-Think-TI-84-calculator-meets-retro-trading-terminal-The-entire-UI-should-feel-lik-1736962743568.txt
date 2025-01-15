@@ -1,0 +1,83 @@
+Design Philosophy
+Think TI-84 calculator meets retro trading terminal. The entire UI should feel like you're operating a sophisticated calculator from the 90s with a dash of cyberpunk aesthetic.
+Visual Elements
+Typography
+Copy- Primary Font: "Calculator" pixel font
+- Monospace characters only
+- No anti-aliasing
+- Limited to 2-3 text sizes
+█████████████████
+MARKETVERSE v1.0
+█████████████████
+Color Palette
+Copy- Background: Deep calculator gray (#1B1B1B)
+- Primary Text: LCD green (#33FF33)
+- Secondary Text: Dim LCD (#205520)
+- Highlights: Bright LCD (#66FF66)
+- Alerts/Errors: LCD red (#FF3333)
+- Success: Bright LCD green (#00FF00)
+UI Elements
+Borders & Frames
+Copy╔════════════════╗
+║ MARKET DATA    ║
+╠════════════════╣
+║ MGLD: 12.50    ║
+║ MOIL: 2.31     ║
+╚════════════════╝
+Buttons
+Copy[BUY] [SELL]
+<NEXT> <BACK>
+Charts
+CopyPRICE     ╦
+12.50 ____║___/\___
+10.00 ____║__/  \__
+ 7.50 ____║_/    \_
+ 5.00 ____║/      \
+     ╠═══════════════
+     0h  6h  12h 24h
+Screen Layouts
+Main Dashboard
+Copy╔═ MARKETVERSE v1.0 ═╗
+║ BAL: 10,000 BUCKS  ║
+╠════════════════════╣
+║ 1: MARKETS         ║
+║ 2: AGENTS          ║
+║ 3: LEADERBOARD     ║
+║ 4: PROFILE         ║
+╚════════════════════╝
+Market View
+Copy╔═ MEMEGOLD (MGLD) ═╗
+║ PRICE: 12.50      ║
+║ CHANGE: +5.2%     ║
+║ ╔════════════╗    ║
+║ ║    /\_     ║    ║
+║ ║   /  \_    ║    ║
+║ ╚════════════╝    ║
+║ [1:BUY] [2:SELL]  ║
+╚════════════════════╝
+Interactive Elements
+
+Menu selection via number keys (1-9)
+Arrow key navigation
+ENTER to confirm
+CLEAR to go back
+Basic animations for price changes (blinking)
+Simple loading animations using rotating characters
+
+Special Effects
+
+Screen "refresh" animation (quick flash)
+Glitch effects for Oracle events
+Pixel dust animations for transactions
+"Calculator memory" indicators
+Static/noise effects for market volatility
+
+Development Notes
+
+Use CSS pixel art techniques
+Implement retro LCD shader effects
+Keep all UI elements on an 8x8 or 16x16 pixel grid
+Use image-rendering: pixelated
+Implement keyboard shortcuts matching calculator buttons
+Add subtle CRT scan lines effect
+Include calculator button press sounds

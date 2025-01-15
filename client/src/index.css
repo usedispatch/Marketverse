@@ -3,11 +3,46 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --calculator-bg: #1B1B1B;
+    --calculator-text: #33FF33;
+    --calculator-dim: #205520;
+    --calculator-highlight: #66FF66;
+    --calculator-error: #FF3333;
+    --calculator-success: #00FF00;
+  }
+
   * {
-    @apply border-border;
+    @apply border-calculator-text;
+  }
+
+  html {
+    font-family: "VT323", "Share Tech Mono", monospace;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: unset;
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply bg-calculator-bg text-calculator-text font-mono;
+    image-rendering: pixelated;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-lcd;
+  }
+
+  .lcd-container {
+    @apply lcd-frame lcd-scan-line;
+  }
+}
+
+@layer components {
+  .calculator-button {
+    @apply bg-calculator-bg border border-calculator-text hover:bg-calculator-dim 
+           transition-colors duration-100 font-lcd uppercase;
+  }
+
+  .calculator-display {
+    @apply bg-calculator-bg border border-calculator-text p-4 font-lcd;
   }
 }
