@@ -11,12 +11,12 @@ export default {
       },
       colors: {
         calculator: {
-          bg: "#1B1B1B",
-          text: "#33FF33",
-          dim: "#205520",
-          highlight: "#66FF66",
-          error: "#FF3333",
-          success: "#00FF00",
+          bg: "#FFFFFF",
+          text: "#000000",
+          dim: "#666666",
+          highlight: "#000000",
+          error: "#FF0000",
+          success: "#008000",
         },
         background: "var(--calculator-bg)",
         foreground: "var(--calculator-text)",
@@ -57,7 +57,7 @@ export default {
       keyframes: {
         'lcd-blink': {
           '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.7' },
+          '50%': { opacity: '0.8' },
         },
         'scan-line': {
           '0%': { transform: 'translateY(-100%)' },
@@ -82,7 +82,7 @@ export default {
             left: '0',
             right: '0',
             bottom: '0',
-            background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(51, 255, 51, 0.1) 3px)',
+            background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.05) 3px)',
             pointerEvents: 'none',
           },
         },
@@ -94,7 +94,7 @@ export default {
             left: '0',
             right: '0',
             height: '1px',
-            background: 'rgba(51, 255, 51, 0.2)',
+            background: 'rgba(0, 0, 0, 0.1)',
             animation: 'scan-line 10s linear infinite',
             pointerEvents: 'none',
           },

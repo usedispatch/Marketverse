@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --calculator-bg: #1B1B1B;
-    --calculator-text: #33FF33;
-    --calculator-dim: #205520;
-    --calculator-highlight: #66FF66;
-    --calculator-error: #FF3333;
-    --calculator-success: #00FF00;
+    --calculator-bg: #FFFFFF;
+    --calculator-text: #000000;
+    --calculator-dim: #666666;
+    --calculator-highlight: #000000;
+    --calculator-error: #FF0000;
+    --calculator-success: #008000;
   }
 
   * {

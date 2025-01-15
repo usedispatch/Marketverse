@@ -1,8 +1,8 @@
 {
   "variant": "professional",
-  "primary": "#33FF33",  /* LCD green */
-  "secondary": "#205520", /* Dim LCD */
-  "background": "#1B1B1B", /* Deep calculator gray */
-  "appearance": "dark",
+  "primary": "#000000",  /* Black */
+  "secondary": "#666666", /* Gray */
+  "background": "#FFFFFF", /* White */
+  "appearance": "light",
   "radius": 0
 }
