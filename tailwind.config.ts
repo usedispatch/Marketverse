@@ -53,6 +53,9 @@ export default {
       animation: {
         'lcd-blink': 'lcd-blink 1s steps(1) infinite',
         'scan-line': 'scan-line 10s linear infinite',
+        'calculator-fade': 'calculator-fade 0.3s ease-in-out',
+        'calculator-slide': 'calculator-slide 0.3s ease-in-out',
+        'calculator-step': 'calculator-step 0.2s steps(3)',
       },
       keyframes: {
         'lcd-blink': {
@@ -62,6 +65,19 @@ export default {
         'scan-line': {
           '0%': { transform: 'translateY(-100%)' },
           '100%': { transform: 'translateY(100%)' },
+        },
+        'calculator-fade': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        'calculator-slide': {
+          '0%': { transform: 'translateY(10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        'calculator-step': {
+          '0%': { transform: 'translateX(-4px)', opacity: '0.3' },
+          '50%': { transform: 'translateX(2px)', opacity: '0.6' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
         },
       },
     },
@@ -98,6 +114,10 @@ export default {
             animation: 'scan-line 10s linear infinite',
             pointerEvents: 'none',
           },
+        },
+        '.calculator-transition': {
+          animation: 'calculator-step 0.2s steps(3)',
+          transition: 'all 0.2s steps(3)',
         },
       };
       addUtilities(newUtilities);

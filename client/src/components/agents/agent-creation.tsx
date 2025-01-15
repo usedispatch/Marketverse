@@ -13,11 +13,31 @@ export function AgentCreation() {
   const [customPrompt, setCustomPrompt] = useState<string>("");
   const totalSteps = 4;
 
+  const nextStep = () => {
+    const element = document.getElementById('agent-creation-content');
+    if (element) {
+      element.classList.remove('animate-calculator-step');
+      void element.offsetWidth; // Trigger reflow
+      element.classList.add('animate-calculator-step');
+    }
+    setStep(prev => Math.min(prev + 1, totalSteps));
+  };
+
+  const prevStep = () => {
+    const element = document.getElementById('agent-creation-content');
+    if (element) {
+      element.classList.remove('animate-calculator-step');
+      void element.offsetWidth; // Trigger reflow
+      element.classList.add('animate-calculator-step');
+    }
+    setStep(prev => Math.max(prev - 1, 1));
+  };
+
   return (
     <Card className="calculator-display lcd-container">
       <CardHeader className="border-b border-calculator-text">
         <CardTitle className="font-lcd text-xl">Agent Creation Terminal</CardTitle>
-        <div className="calculator-display text-sm font-mono">
+        <div className="calculator-display text-sm font-mono animate-calculator-fade">
           STEP {step}/{totalSteps} - {
             step === 1 ? "SELECT TEMPLATE" : 
             step === 2 ? "CONFIGURE PERSONALITY" :
@@ -26,9 +46,9 @@ export function AgentCreation() {
           }
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent id="agent-creation-content" className="calculator-transition">
         {step === 1 && (
-          <div className="space-y-6 pt-4">
+          <div className="space-y-6 pt-4 animate-calculator-slide">
             <div className="calculator-display p-2">
               <span className="text-calculator-dim">SELECT TEMPLATE [1-4]:</span>
             </div>
@@ -38,7 +58,7 @@ export function AgentCreation() {
                   key={template.id}
                   variant="outline"
                   className="calculator-button h-auto p-4 justify-start flex flex-col items-start"
-                  onClick={() => setStep(2)}
+                  onClick={nextStep}
                 >
                   <div className="font-lcd">[{index + 1}] {template.name}</div>
                   <div className="text-sm text-calculator-dim">{template.description}</div>
@@ -49,7 +69,7 @@ export function AgentCreation() {
         )}
 
         {step === 2 && (
-          <div className="space-y-6 pt-4">
+          <div className="space-y-6 pt-4 animate-calculator-slide">
             <div className="calculator-display p-2">
               <span className="text-calculator-dim">SELECT PERSONALITY [1-4]:</span>
             </div>
@@ -89,7 +109,7 @@ export function AgentCreation() {
             <div className="pt-4">
               <Button 
                 className="calculator-button w-full" 
-                onClick={() => setStep(3)}
+                onClick={nextStep}
                 disabled={!customPrompt.trim()}
               >
                 NEXT [ENTER]
@@ -99,7 +119,7 @@ export function AgentCreation() {
         )}
 
         {step === 3 && (
-          <div className="space-y-6 pt-4">
+          <div className="space-y-6 pt-4 animate-calculator-slide">
             <div className="calculator-display p-2">
               <span className="text-calculator-dim">CONFIGURE PARAMETERS:</span>
             </div>
@@ -125,7 +145,7 @@ export function AgentCreation() {
             </div>
 
             <div className="pt-4">
-              <Button className="calculator-button w-full" onClick={() => setStep(4)}>
+              <Button className="calculator-button w-full" onClick={nextStep}>
                 NEXT [ENTER]
               </Button>
             </div>
@@ -133,7 +153,7 @@ export function AgentCreation() {
         )}
 
         {step === 4 && (
-          <div className="space-y-6 pt-4">
+          <div className="space-y-6 pt-4 animate-calculator-slide">
             <div className="calculator-display p-2">
               <span className="text-calculator-dim">DEPLOYMENT CONFIG:</span>
             </div>
@@ -169,7 +189,7 @@ export function AgentCreation() {
             </div>
 
             <div className="flex gap-2 pt-4">
-              <Button variant="outline" className="calculator-button flex-1" onClick={() => setStep(3)}>
+              <Button variant="outline" className="calculator-button flex-1" onClick={prevStep}>
                 BACK [ESC]
               </Button>
               <Button className="calculator-button flex-1">
