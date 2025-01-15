@@ -13,20 +13,20 @@ export function MarketTable() {
   return (
     <Table>
       <TableHeader>
-        <TableRow>
-          <TableHead>Asset</TableHead>
-          <TableHead className="text-right">Price</TableHead>
-          <TableHead className="text-right">24h Change</TableHead>
-          <TableHead className="text-right">Volume</TableHead>
-          <TableHead className="text-right">Supply</TableHead>
+        <TableRow className="border-b border-calculator-text">
+          <TableHead className="font-lcd">Asset</TableHead>
+          <TableHead className="text-right font-lcd">Price</TableHead>
+          <TableHead className="text-right font-lcd">24h Change</TableHead>
+          <TableHead className="text-right font-lcd">Volume</TableHead>
+          <TableHead className="text-right font-lcd">Supply</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody className="font-mono">
         {mockMarkets.map((market) => (
-          <TableRow key={market.id}>
+          <TableRow key={market.id} className="border-b border-calculator-text/50">
             <TableCell className="font-medium">{market.name}</TableCell>
             <TableCell className="text-right">{market.price} AOB</TableCell>
-            <TableCell className={`text-right flex items-center justify-end ${market.change24h >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+            <TableCell className={`text-right flex items-center justify-end ${market.change24h >= 0 ? 'text-calculator-success' : 'text-calculator-error'}`}>
               {market.change24h >= 0 ? (
                 <ArrowUpRight className="w-4 h-4 mr-1" />
               ) : (
