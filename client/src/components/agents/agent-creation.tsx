@@ -10,6 +10,7 @@ import { agentTemplates, personalityTemplates } from "@/lib/mock-data";
 export function AgentCreation() {
   const [step, setStep] = useState(1);
   const [selectedPersonality, setSelectedPersonality] = useState<string | null>(null);
+  const [customPrompt, setCustomPrompt] = useState<string>("");
   const totalSteps = 4;
 
   return (
@@ -62,7 +63,7 @@ export function AgentCreation() {
                   }`}
                   onClick={() => {
                     setSelectedPersonality(personality.id);
-                    setStep(3);
+                    setCustomPrompt(personality.prompt);
                   }}
                 >
                   <div className="font-lcd">[{index + 1}] {personality.name}</div>
@@ -70,16 +71,30 @@ export function AgentCreation() {
                 </Button>
               ))}
             </div>
-            {selectedPersonality && (
-              <div className="calculator-display p-4">
-                <Label className="font-lcd mb-2">SYSTEM PROMPT:</Label>
-                <Textarea 
-                  className="calculator-display mt-2 font-mono text-sm"
-                  value={personalityTemplates.find(p => p.id === selectedPersonality)?.prompt}
-                  rows={4}
-                />
+
+            <div className="calculator-display p-4">
+              <Label className="font-lcd mb-2">PERSONALITY PROMPT:</Label>
+              <div className="text-xs text-calculator-dim mb-2">
+                Customize your agent's behavior and decision-making process
               </div>
-            )}
+              <Textarea 
+                className="calculator-display mt-2 font-mono text-sm"
+                value={customPrompt}
+                onChange={(e) => setCustomPrompt(e.target.value)}
+                placeholder="Enter custom personality prompt..."
+                rows={4}
+              />
+            </div>
+
+            <div className="pt-4">
+              <Button 
+                className="calculator-button w-full" 
+                onClick={() => setStep(3)}
+                disabled={!customPrompt.trim()}
+              >
+                NEXT [ENTER]
+              </Button>
+            </div>
           </div>
         )}
 
@@ -143,6 +158,13 @@ export function AgentCreation() {
                   <li>FREQ: MEDIUM (5/10)</li>
                   <li>SIZE: MEDIUM (5/10)</li>
                 </ul>
+
+                <div className="mt-4">
+                  <h5 className="font-lcd text-sm mb-1">PERSONALITY PROMPT:</h5>
+                  <div className="text-xs font-mono text-calculator-dim whitespace-pre-wrap">
+                    {customPrompt}
+                  </div>
+                </div>
               </div>
             </div>
 
