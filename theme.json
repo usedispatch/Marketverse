@@ -1,8 +1,8 @@
 {
   "variant": "professional",
-  "primary": "#000000",  /* Black */
-  "secondary": "#666666", /* Gray */
-  "background": "#FFFFFF", /* White */
+  "primary": "#000000",
+  "secondary": "#666666",
+  "background": "#FFFFFF",
   "appearance": "light",
   "radius": 0
 }

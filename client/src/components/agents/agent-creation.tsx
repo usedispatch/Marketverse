@@ -4,18 +4,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { agentTemplates } from "@/lib/mock-data";
+import { Textarea } from "@/components/ui/textarea";
+import { agentTemplates, personalityTemplates } from "@/lib/mock-data";
 
 export function AgentCreation() {
   const [step, setStep] = useState(1);
-  const totalSteps = 3;
+  const [selectedPersonality, setSelectedPersonality] = useState<string | null>(null);
+  const totalSteps = 4;
 
   return (
     <Card className="calculator-display lcd-container">
       <CardHeader className="border-b border-calculator-text">
         <CardTitle className="font-lcd text-xl">Agent Creation Terminal</CardTitle>
         <div className="calculator-display text-sm font-mono">
-          STEP {step}/{totalSteps} - {step === 1 ? "SELECT TEMPLATE" : step === 2 ? "CONFIGURE STRATEGY" : "DEPLOYMENT"}
+          STEP {step}/{totalSteps} - {
+            step === 1 ? "SELECT TEMPLATE" : 
+            step === 2 ? "CONFIGURE PERSONALITY" :
+            step === 3 ? "CONFIGURE STRATEGY" : 
+            "DEPLOYMENT"
+          }
         </div>
       </CardHeader>
       <CardContent>
@@ -43,6 +50,42 @@ export function AgentCreation() {
         {step === 2 && (
           <div className="space-y-6 pt-4">
             <div className="calculator-display p-2">
+              <span className="text-calculator-dim">SELECT PERSONALITY [1-4]:</span>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              {personalityTemplates.map((personality, index) => (
+                <Button
+                  key={personality.id}
+                  variant="outline"
+                  className={`calculator-button h-auto p-4 justify-start flex flex-col items-start ${
+                    selectedPersonality === personality.id ? "border-2" : ""
+                  }`}
+                  onClick={() => {
+                    setSelectedPersonality(personality.id);
+                    setStep(3);
+                  }}
+                >
+                  <div className="font-lcd">[{index + 1}] {personality.name}</div>
+                  <div className="text-sm text-calculator-dim">{personality.description}</div>
+                </Button>
+              ))}
+            </div>
+            {selectedPersonality && (
+              <div className="calculator-display p-4">
+                <Label className="font-lcd mb-2">SYSTEM PROMPT:</Label>
+                <Textarea 
+                  className="calculator-display mt-2 font-mono text-sm"
+                  value={personalityTemplates.find(p => p.id === selectedPersonality)?.prompt}
+                  rows={4}
+                />
+              </div>
+            )}
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="space-y-6 pt-4">
+            <div className="calculator-display p-2">
               <span className="text-calculator-dim">CONFIGURE PARAMETERS:</span>
             </div>
 
@@ -67,14 +110,14 @@ export function AgentCreation() {
             </div>
 
             <div className="pt-4">
-              <Button className="calculator-button w-full" onClick={() => setStep(3)}>
+              <Button className="calculator-button w-full" onClick={() => setStep(4)}>
                 NEXT [ENTER]
               </Button>
             </div>
           </div>
         )}
 
-        {step === 3 && (
+        {step === 4 && (
           <div className="space-y-6 pt-4">
             <div className="calculator-display p-2">
               <span className="text-calculator-dim">DEPLOYMENT CONFIG:</span>
@@ -92,8 +135,10 @@ export function AgentCreation() {
               </div>
 
               <div className="calculator-display p-4 mt-4">
-                <h4 className="font-lcd mb-2">STRATEGY PREVIEW:</h4>
+                <h4 className="font-lcd mb-2">AGENT CONFIGURATION:</h4>
                 <ul className="text-sm space-y-1 font-mono text-calculator-dim">
+                  <li>TEMPLATE: VALUE SEEKER</li>
+                  <li>PERSONALITY: {selectedPersonality?.toUpperCase() || "NOT SET"}</li>
                   <li>RISK: MEDIUM (5/10)</li>
                   <li>FREQ: MEDIUM (5/10)</li>
                   <li>SIZE: MEDIUM (5/10)</li>
@@ -102,7 +147,7 @@ export function AgentCreation() {
             </div>
 
             <div className="flex gap-2 pt-4">
-              <Button variant="outline" className="calculator-button flex-1" onClick={() => setStep(2)}>
+              <Button variant="outline" className="calculator-button flex-1" onClick={() => setStep(3)}>
                 BACK [ESC]
               </Button>
               <Button className="calculator-button flex-1">
