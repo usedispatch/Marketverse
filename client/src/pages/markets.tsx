@@ -6,28 +6,46 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export default function Markets() {
   return (
     <div className="space-y-8">
+      {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold font-lcd">Markets</h1>
+        <div className="space-y-1">
+          <h1 className="text-3xl font-bold font-lcd">Markets Terminal</h1>
+          <p className="text-calculator-dim font-mono">Real-time market data and trading</p>
+        </div>
         <Card className="calculator-display">
           <CardContent className="py-2 px-4">
-            <span className="font-mono text-sm">Season 1: Week 3</span>
+            <div className="font-mono text-sm space-y-1">
+              <div className="text-calculator-dim text-xs">CURRENT PERIOD</div>
+              <div>SEASON 1: WEEK 3</div>
+              <div className="text-calculator-dim text-xs">TIME LEFT: 2D 14H</div>
+            </div>
           </CardContent>
         </Card>
       </div>
 
+      {/* Market Overview */}
       <Card className="calculator-display lcd-container">
-        <CardHeader>
-          <CardTitle className="font-lcd">Market Overview</CardTitle>
+        <CardHeader className="border-b border-calculator-text">
+          <CardTitle className="font-lcd flex items-center justify-between">
+            <span>MARKET OVERVIEW</span>
+            <span className="text-sm font-mono text-calculator-dim">PRESS [M] FOR MARKETS</span>
+          </CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="p-6">
           <MarketTable />
         </CardContent>
       </Card>
 
+      {/* Asset Details */}
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold font-lcd">Market Details</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold font-lcd">Asset Details</h2>
+          <div className="font-mono text-sm text-calculator-dim">
+            PRESS [1-4] TO SELECT ASSET
+          </div>
+        </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {mockMarkets.map((market) => (
+          {mockMarkets.map((market, index) => (
             <AssetCard key={market.id} asset={market} />
           ))}
         </div>
