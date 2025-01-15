@@ -1,4 +1,3 @@
-import { AgentCreation } from "@/components/agents/agent-creation";
 import { AgentTable } from "@/components/agents/agent-table";
 import { StatsCard } from "@/components/dashboard/stats-card";
 import { mockStats } from "@/lib/mock-data";
@@ -32,8 +31,6 @@ export default function Agents() {
           icon={<Bell className="w-4 h-4 text-muted-foreground" />}
         />
       </div>
-
-      <AgentCreation />
 
       <div>
         <h2 className="text-2xl font-bold mb-4">Active Agents</h2>

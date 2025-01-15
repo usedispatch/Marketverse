@@ -2,6 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { BarChart2, Bot, Trophy } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { AgentCreationDialog } from "@/components/agents/agent-creation-dialog";
 
 export default function Navbar() {
   const [location] = useLocation();
@@ -46,6 +47,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center space-x-4">
+          <AgentCreationDialog />
           <Button variant="outline" className="calculator-button flex items-center gap-2">
             10,000 AOB
           </Button>
