@@ -7,10 +7,37 @@ import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
 import { agentTemplates, personalityTemplates } from "@/lib/mock-data";
 
+const getRiskDescription = (value: number) => {
+  if (value <= 2) return "Very Conservative - Minimal risk, focus on capital preservation";
+  if (value <= 4) return "Conservative - Lower risk, steady approach";
+  if (value <= 6) return "Moderate - Balanced risk-reward ratio";
+  if (value <= 8) return "Aggressive - Higher risk for better returns";
+  return "Very Aggressive - Maximum risk for highest potential returns";
+};
+
+const getFrequencyDescription = (value: number) => {
+  if (value <= 2) return "Very Low - Few trades per week";
+  if (value <= 4) return "Low - 1-2 trades per day";
+  if (value <= 6) return "Medium - Several trades per day";
+  if (value <= 8) return "High - Multiple trades per hour";
+  return "Very High - Constant trading activity";
+};
+
+const getPositionDescription = (value: number) => {
+  if (value <= 2) return "Micro - 1-2% of portfolio per trade";
+  if (value <= 4) return "Small - 5% of portfolio per trade";
+  if (value <= 6) return "Medium - 10% of portfolio per trade";
+  if (value <= 8) return "Large - 15-20% of portfolio per trade";
+  return "Maximum - 25% of portfolio per trade";
+};
+
 export function AgentCreation() {
   const [step, setStep] = useState(1);
   const [selectedPersonality, setSelectedPersonality] = useState<string | null>(null);
   const [customPrompt, setCustomPrompt] = useState<string>("");
+  const [riskLevel, setRiskLevel] = useState(5);
+  const [frequencyLevel, setFrequencyLevel] = useState(5);
+  const [positionLevel, setPositionLevel] = useState(5);
   const totalSteps = 4;
 
   const nextStep = () => {
@@ -104,22 +131,48 @@ export function AgentCreation() {
         {step === 3 && (
           <div className="space-y-6 pt-4 animate-calculator-slide">
             <div className="space-y-6">
-              <div className="space-y-2">
-                <Label className="font-lcd">Risk Tolerance</Label>
-                <Slider defaultValue={[5]} max={10} step={1} className="calculator-display" />
-                <div className="calculator-display text-right font-mono">5</div>
-              </div>
+              <div className="calculator-display p-4 space-y-4">
+                <div className="space-y-2">
+                  <Label className="font-lcd">Risk Level: {riskLevel}/10</Label>
+                  <Slider 
+                    value={[riskLevel]} 
+                    onValueChange={([value]) => setRiskLevel(value)} 
+                    max={10} 
+                    step={1} 
+                    className="calculator-display" 
+                  />
+                  <div className="font-mono text-sm text-calculator-dim">
+                    {getRiskDescription(riskLevel)}
+                  </div>
+                </div>
 
-              <div className="space-y-2">
-                <Label className="font-lcd">Trading Frequency</Label>
-                <Slider defaultValue={[5]} max={10} step={1} className="calculator-display" />
-                <div className="calculator-display text-right font-mono">5</div>
-              </div>
+                <div className="space-y-2">
+                  <Label className="font-lcd">Trading Frequency: {frequencyLevel}/10</Label>
+                  <Slider 
+                    value={[frequencyLevel]} 
+                    onValueChange={([value]) => setFrequencyLevel(value)} 
+                    max={10} 
+                    step={1} 
+                    className="calculator-display" 
+                  />
+                  <div className="font-mono text-sm text-calculator-dim">
+                    {getFrequencyDescription(frequencyLevel)}
+                  </div>
+                </div>
 
-              <div className="space-y-2">
-                <Label className="font-lcd">Position Size</Label>
-                <Slider defaultValue={[5]} max={10} step={1} className="calculator-display" />
-                <div className="calculator-display text-right font-mono">5</div>
+                <div className="space-y-2">
+                  <Label className="font-lcd">Position Size: {positionLevel}/10</Label>
+                  <Slider 
+                    value={[positionLevel]} 
+                    onValueChange={([value]) => setPositionLevel(value)} 
+                    max={10} 
+                    step={1} 
+                    className="calculator-display" 
+                  />
+                  <div className="font-mono text-sm text-calculator-dim">
+                    {getPositionDescription(positionLevel)}
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -149,9 +202,9 @@ export function AgentCreation() {
                 <ul className="text-sm space-y-1 font-mono text-calculator-dim">
                   <li>TEMPLATE: VALUE SEEKER</li>
                   <li>PERSONALITY: {selectedPersonality?.toUpperCase() || "NOT SET"}</li>
-                  <li>RISK: MEDIUM (5/10)</li>
-                  <li>FREQ: MEDIUM (5/10)</li>
-                  <li>SIZE: MEDIUM (5/10)</li>
+                  <li>RISK: {getRiskDescription(riskLevel)}</li>
+                  <li>FREQ: {getFrequencyDescription(frequencyLevel)}</li>
+                  <li>SIZE: {getPositionDescription(positionLevel)}</li>
                 </ul>
               </div>
             </div>
