@@ -36,18 +36,7 @@ export function AgentCreation() {
   return (
     <Card className="calculator-display lcd-container">
       <CardHeader className="border-b border-calculator-text">
-        <CardTitle className="font-lcd flex items-center justify-between">
-          <span>AGENT CREATION [{step}/{totalSteps}]</span>
-          {step > 1 && (
-            <Button 
-              variant="outline" 
-              className="calculator-button text-sm"
-              onClick={prevStep}
-            >
-              [ESC] BACK
-            </Button>
-          )}
-        </CardTitle>
+        <CardTitle className="font-lcd text-xl">AGENT CREATION [{step}/{totalSteps}]</CardTitle>
       </CardHeader>
       <CardContent id="agent-creation-content" className="calculator-transition">
         {step === 1 && (
@@ -57,14 +46,11 @@ export function AgentCreation() {
                 <Button
                   key={template.id}
                   variant="outline"
-                  className="calculator-button h-auto p-4 justify-start flex flex-col items-start space-y-2"
+                  className="calculator-button h-auto p-4 justify-start flex flex-col items-start"
                   onClick={nextStep}
                 >
-                  <div className="font-lcd w-full flex justify-between items-center">
-                    <span>[{index + 1}] {template.name}</span>
-                    <span className="text-calculator-dim">→</span>
-                  </div>
-                  <div className="text-sm text-calculator-dim line-clamp-2">{template.description}</div>
+                  <div className="font-lcd">[{index + 1}] {template.name}</div>
+                  <div className="text-sm text-calculator-dim">{template.description}</div>
                 </Button>
               ))}
             </div>
@@ -78,7 +64,7 @@ export function AgentCreation() {
                 <Button
                   key={personality.id}
                   variant="outline"
-                  className={`calculator-button h-auto p-4 justify-start flex flex-col items-start space-y-2 ${
+                  className={`calculator-button h-auto p-4 justify-start flex flex-col items-start ${
                     selectedPersonality === personality.id ? "border-2" : ""
                   }`}
                   onClick={() => {
@@ -86,11 +72,8 @@ export function AgentCreation() {
                     setCustomPrompt(personality.prompt);
                   }}
                 >
-                  <div className="font-lcd w-full flex justify-between items-center">
-                    <span>[{index + 1}] {personality.name}</span>
-                    {selectedPersonality === personality.id && <span>✓</span>}
-                  </div>
-                  <div className="text-sm text-calculator-dim line-clamp-2">{personality.description}</div>
+                  <div className="font-lcd">[{index + 1}] {personality.name}</div>
+                  <div className="text-sm text-calculator-dim">{personality.description}</div>
                 </Button>
               ))}
             </div>
@@ -106,8 +89,12 @@ export function AgentCreation() {
               />
             </div>
 
-            <div className="flex gap-2">
-              <Button className="calculator-button w-full" onClick={nextStep} disabled={!customPrompt.trim()}>
+            <div className="pt-4">
+              <Button 
+                className="calculator-button w-full" 
+                onClick={nextStep}
+                disabled={!customPrompt.trim()}
+              >
                 NEXT [ENTER]
               </Button>
             </div>
@@ -136,10 +123,7 @@ export function AgentCreation() {
               </div>
             </div>
 
-            <div className="flex gap-2">
-              <Button variant="outline" className="calculator-button w-full" onClick={prevStep}>
-                BACK [ESC]
-              </Button>
+            <div className="pt-4">
               <Button className="calculator-button w-full" onClick={nextStep}>
                 NEXT [ENTER]
               </Button>
@@ -160,7 +144,7 @@ export function AgentCreation() {
                 <Input type="number" className="calculator-display font-mono" placeholder="ENTER AMOUNT" />
               </div>
 
-              <div className="calculator-display p-4">
+              <div className="calculator-display p-4 mt-4">
                 <h4 className="font-lcd mb-2">CONFIGURATION</h4>
                 <ul className="text-sm space-y-1 font-mono text-calculator-dim">
                   <li>TEMPLATE: VALUE SEEKER</li>
@@ -172,7 +156,7 @@ export function AgentCreation() {
               </div>
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 pt-4">
               <Button variant="outline" className="calculator-button flex-1" onClick={prevStep}>
                 BACK [ESC]
               </Button>
