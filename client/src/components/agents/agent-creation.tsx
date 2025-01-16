@@ -36,22 +36,11 @@ export function AgentCreation() {
   return (
     <Card className="calculator-display lcd-container">
       <CardHeader className="border-b border-calculator-text">
-        <CardTitle className="font-lcd text-xl">Agent Creation Terminal</CardTitle>
-        <div className="calculator-display text-sm font-mono animate-calculator-fade">
-          STEP {step}/{totalSteps} - {
-            step === 1 ? "SELECT TEMPLATE" : 
-            step === 2 ? "CONFIGURE PERSONALITY" :
-            step === 3 ? "CONFIGURE STRATEGY" : 
-            "DEPLOYMENT"
-          }
-        </div>
+        <CardTitle className="font-lcd text-xl">AGENT CREATION [{step}/{totalSteps}]</CardTitle>
       </CardHeader>
       <CardContent id="agent-creation-content" className="calculator-transition">
         {step === 1 && (
           <div className="space-y-6 pt-4 animate-calculator-slide">
-            <div className="calculator-display p-2">
-              <span className="text-calculator-dim">SELECT TEMPLATE [1-4]:</span>
-            </div>
             <div className="grid gap-4 md:grid-cols-2">
               {agentTemplates.map((template, index) => (
                 <Button
@@ -70,9 +59,6 @@ export function AgentCreation() {
 
         {step === 2 && (
           <div className="space-y-6 pt-4 animate-calculator-slide">
-            <div className="calculator-display p-2">
-              <span className="text-calculator-dim">SELECT PERSONALITY [1-4]:</span>
-            </div>
             <div className="grid gap-4 md:grid-cols-2">
               {personalityTemplates.map((personality, index) => (
                 <Button
@@ -93,10 +79,7 @@ export function AgentCreation() {
             </div>
 
             <div className="calculator-display p-4">
-              <Label className="font-lcd mb-2">PERSONALITY PROMPT:</Label>
-              <div className="text-xs text-calculator-dim mb-2">
-                Customize your agent's behavior and decision-making process
-              </div>
+              <Label className="font-lcd mb-2">PROMPT</Label>
               <Textarea 
                 className="calculator-display mt-2 font-mono text-sm"
                 value={customPrompt}
@@ -120,25 +103,21 @@ export function AgentCreation() {
 
         {step === 3 && (
           <div className="space-y-6 pt-4 animate-calculator-slide">
-            <div className="calculator-display p-2">
-              <span className="text-calculator-dim">CONFIGURE PARAMETERS:</span>
-            </div>
-
             <div className="space-y-6">
               <div className="space-y-2">
-                <Label className="font-lcd">RISK TOLERANCE [1-10]</Label>
+                <Label className="font-lcd">Risk Tolerance</Label>
                 <Slider defaultValue={[5]} max={10} step={1} className="calculator-display" />
                 <div className="calculator-display text-right font-mono">5</div>
               </div>
 
               <div className="space-y-2">
-                <Label className="font-lcd">TRADING FREQUENCY [1-10]</Label>
+                <Label className="font-lcd">Trading Frequency</Label>
                 <Slider defaultValue={[5]} max={10} step={1} className="calculator-display" />
                 <div className="calculator-display text-right font-mono">5</div>
               </div>
 
               <div className="space-y-2">
-                <Label className="font-lcd">POSITION SIZE [1-10]</Label>
+                <Label className="font-lcd">Position Size</Label>
                 <Slider defaultValue={[5]} max={10} step={1} className="calculator-display" />
                 <div className="calculator-display text-right font-mono">5</div>
               </div>
@@ -154,23 +133,19 @@ export function AgentCreation() {
 
         {step === 4 && (
           <div className="space-y-6 pt-4 animate-calculator-slide">
-            <div className="calculator-display p-2">
-              <span className="text-calculator-dim">DEPLOYMENT CONFIG:</span>
-            </div>
-
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label className="font-lcd">AGENT NAME:</Label>
+                <Label className="font-lcd">Agent Name</Label>
                 <Input className="calculator-display font-mono" placeholder="ENTER NAME" />
               </div>
 
               <div className="space-y-2">
-                <Label className="font-lcd">INITIAL CAPITAL (AOB):</Label>
+                <Label className="font-lcd">Initial Capital (AOB)</Label>
                 <Input type="number" className="calculator-display font-mono" placeholder="ENTER AMOUNT" />
               </div>
 
               <div className="calculator-display p-4 mt-4">
-                <h4 className="font-lcd mb-2">AGENT CONFIGURATION:</h4>
+                <h4 className="font-lcd mb-2">CONFIGURATION</h4>
                 <ul className="text-sm space-y-1 font-mono text-calculator-dim">
                   <li>TEMPLATE: VALUE SEEKER</li>
                   <li>PERSONALITY: {selectedPersonality?.toUpperCase() || "NOT SET"}</li>
@@ -178,13 +153,6 @@ export function AgentCreation() {
                   <li>FREQ: MEDIUM (5/10)</li>
                   <li>SIZE: MEDIUM (5/10)</li>
                 </ul>
-
-                <div className="mt-4">
-                  <h5 className="font-lcd text-sm mb-1">PERSONALITY PROMPT:</h5>
-                  <div className="text-xs font-mono text-calculator-dim whitespace-pre-wrap">
-                    {customPrompt}
-                  </div>
-                </div>
               </div>
             </div>
 
