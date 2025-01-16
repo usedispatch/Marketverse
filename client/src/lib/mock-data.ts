@@ -24,9 +24,9 @@ export const mockStats = {
 };
 
 export const agentTemplates = [
-  { id: "dca", name: "DCA Trader", description: "Dollar-cost averaging strategy" },
-  { id: "momentum", name: "Momentum Hunter", description: "Trend following strategy" },
-  { id: "value", name: "Value Seeker", description: "Mean reversion strategy" },
+  { id: "dca", name: "DCA Trader", description: "Regular buys at fixed intervals" },
+  { id: "momentum", name: "Momentum Hunter", description: "Follows market trends" },
+  { id: "value", name: "Value Seeker", description: "Buys low, sells high" },
   { id: "trend", name: "Trend Follower", description: "Technical analysis based" }
 ];
 
@@ -34,25 +34,25 @@ export const personalityTemplates = [
   { 
     id: "cautious",
     name: "Cautious Analyst",
-    description: "A careful and methodical trader who prioritizes risk management",
+    description: "A careful and methodical trader",
     prompt: "You are a cautious and analytical trader. You carefully evaluate all risks before making decisions. You prefer to wait for clear confirmation signals and maintain strict position sizing."
   },
   {
     id: "aggressive",
     name: "Aggressive Trader",
-    description: "A bold trader who seeks high-risk, high-reward opportunities",
+    description: "Seeks high-risk opportunities",
     prompt: "You are an aggressive and opportunistic trader. You actively seek high-potential trades and are willing to take calculated risks for greater returns. You move quickly when you spot opportunities."
   },
   {
     id: "balanced",
     name: "Balanced Investor",
-    description: "A well-rounded approach balancing risk and reward",
+    description: "Balances risk and reward",
     prompt: "You are a balanced and disciplined trader. You seek a harmonious blend of risk and reward, always considering both upside potential and downside protection in your decisions."
   },
   {
     id: "adaptive",
     name: "Market Adaptive",
-    description: "Flexible trading style that adapts to market conditions",
+    description: "Adapts to market conditions",
     prompt: "You are an adaptive and flexible trader. You adjust your strategy based on market conditions and volatility. You're comfortable switching between aggressive and defensive positions as needed."
   }
 ];
