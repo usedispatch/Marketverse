@@ -1,25 +1,27 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { BarChart2, Bot, Trophy } from "lucide-react";
+import { BarChart2, Bot, Trophy, Wallet } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { AgentCreationDialog } from "@/components/agents/agent-creation-dialog";
+import { useWallet } from "@/hooks/use-wallet";
 
 export default function Navbar() {
   const [location] = useLocation();
+  const { connect, disconnect, isConnected, balance, address } = useWallet();
 
   return (
     <Card className="border-b rounded-none">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-8">
           <Link href="/">
-            <a className="text-xl font-bold">Marketverse</a>
+            <a className="text-xl font-bold font-lcd">Marketverse</a>
           </Link>
 
           <nav className="hidden md:flex space-x-4">
             <Link href="/markets">
               <Button 
                 variant={location === "/markets" ? "secondary" : "ghost"}
-                className="flex items-center gap-2"
+                className="calculator-button flex items-center gap-2"
               >
                 <BarChart2 className="w-4 h-4" />
                 Markets
@@ -28,7 +30,7 @@ export default function Navbar() {
             <Link href="/">
               <Button 
                 variant={location === "/" ? "secondary" : "ghost"}
-                className="flex items-center gap-2"
+                className="calculator-button flex items-center gap-2"
               >
                 <Bot className="w-4 h-4" />
                 Agents
@@ -37,7 +39,7 @@ export default function Navbar() {
             <Link href="/leaderboard">
               <Button 
                 variant={location === "/leaderboard" ? "secondary" : "ghost"}
-                className="flex items-center gap-2"
+                className="calculator-button flex items-center gap-2"
               >
                 <Trophy className="w-4 h-4" />
                 Leaderboard
@@ -47,10 +49,29 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center space-x-4">
-          <AgentCreationDialog />
-          <Button variant="outline" className="calculator-button flex items-center gap-2">
-            10,000 AOB
-          </Button>
+          {isConnected ? (
+            <>
+              <AgentCreationDialog />
+              <div className="flex items-center space-x-2">
+                <Button variant="outline" className="calculator-button flex items-center gap-2">
+                  <Wallet className="w-4 h-4" />
+                  {balance.toLocaleString()} AOB
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  className="calculator-button text-xs text-calculator-dim"
+                  onClick={disconnect}
+                >
+                  {address?.slice(0, 6)}...{address?.slice(-4)} [X]
+                </Button>
+              </div>
+            </>
+          ) : (
+            <Button onClick={connect} className="calculator-button flex items-center gap-2">
+              <Wallet className="w-4 h-4" />
+              Connect Wallet
+            </Button>
+          )}
         </div>
       </div>
     </Card>
