@@ -5,6 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { agentTemplates, personalityTemplates } from "@/lib/mock-data";
 
 export function AgentCreation() {
@@ -61,20 +66,28 @@ export function AgentCreation() {
           <div className="space-y-6 pt-4 animate-calculator-slide">
             <div className="grid gap-4 md:grid-cols-2">
               {personalityTemplates.map((personality, index) => (
-                <Button
-                  key={personality.id}
-                  variant="outline"
-                  className={`calculator-button h-auto p-4 justify-start flex flex-col items-start ${
-                    selectedPersonality === personality.id ? "border-2" : ""
-                  }`}
-                  onClick={() => {
-                    setSelectedPersonality(personality.id);
-                    setCustomPrompt(personality.prompt);
-                  }}
-                >
-                  <div className="font-lcd">[{index + 1}] {personality.name}</div>
-                  <div className="text-sm text-calculator-dim">{personality.description}</div>
-                </Button>
+                <Tooltip key={personality.id}>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={`calculator-button h-auto p-4 justify-start flex flex-col items-start ${
+                        selectedPersonality === personality.id ? "border-2" : ""
+                      }`}
+                      onClick={() => {
+                        setSelectedPersonality(personality.id);
+                        setCustomPrompt(personality.prompt);
+                      }}
+                    >
+                      <div className="font-lcd">[{index + 1}] {personality.name}</div>
+                      <div className="text-sm text-calculator-dim line-clamp-2">
+                        {personality.description}
+                      </div>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" className="calculator-display p-2 max-w-sm">
+                    <p className="font-mono text-xs">{personality.prompt}</p>
+                  </TooltipContent>
+                </Tooltip>
               ))}
             </div>
 
