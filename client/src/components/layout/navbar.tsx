@@ -14,7 +14,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-8">
           <Link href="/">
-            <a className="text-xl font-bold font-lcd">Marketverse</a>
+            <span className="text-xl font-bold font-lcd cursor-pointer">Marketverse</span>
           </Link>
 
           <nav className="hidden md:flex space-x-4">
