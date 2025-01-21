@@ -1,13 +1,48 @@
 import type { Agent, AgentTemplate, PersonalityTemplate } from "@/types/agent";
 
 export const mockMarkets = [
-  { id: "MGLD", name: "MemeGold", price: 12.50, change24h: 5.2, volume: 125000, supply: 10000, maxSupply: 100000 },
-  { id: "MOIL", name: "MemeOil", price: 2.31, change24h: 12.5, volume: 230000, supply: 50000, maxSupply: 500000 },
-  { id: "MCRN", name: "MemeCorn", price: 1.15, change24h: -3.1, volume: 89000, supply: 25000, maxSupply: 250000 },
-  { id: "MCOF", name: "MemeCoffee", price: 0.85, change24h: 1.2, volume: 45000, supply: 15000, maxSupply: 150000 }
+  { 
+    id: "MGLD", 
+    name: "MemeGold", 
+    description: "Digital bling for the crypto kings. As reliable as your friend who says 'trust me bro' 🚀",
+    price: 12.50, 
+    change24h: 5.2, 
+    volume: 125000, 
+    supply: 10000, 
+    maxSupply: 100000 
+  },
+  { 
+    id: "MOIL", 
+    name: "MemeOil", 
+    description: "Smoother than butter, more volatile than your ex. Slippery when profitable! 🛢️",
+    price: 2.31, 
+    change24h: 12.5, 
+    volume: 230000, 
+    supply: 50000, 
+    maxSupply: 500000 
+  },
+  { 
+    id: "MCRN", 
+    name: "MemeCorn", 
+    description: "It's honest work! Farm-to-wallet technology backed by digital scarecrows 🌽",
+    price: 1.15, 
+    change24h: -3.1, 
+    volume: 89000, 
+    supply: 25000, 
+    maxSupply: 250000 
+  },
+  { 
+    id: "MCOF", 
+    name: "MemeCoffee", 
+    description: "Wake up and smell the profits! Guaranteed to keep your portfolio up all night ☕",
+    price: 0.85, 
+    change24h: 1.2, 
+    volume: 45000, 
+    supply: 15000, 
+    maxSupply: 150000 
+  }
 ];
 
-// Start with no agents
 export const mockAgents: Agent[] = [];
 
 export const mockLeaderboard = [

@@ -18,16 +18,16 @@ export default function Asset() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-3xl font-bold font-lcd">{asset.name} ({asset.id})</h1>
-          <p className="text-calculator-dim font-mono">Trading Terminal</p>
+          <h1 className="text-2xl sm:text-3xl font-bold font-lcd">{asset.name} ({asset.id})</h1>
+          <p className="text-calculator-dim font-mono text-sm sm:text-base">{asset.description}</p>
         </div>
-        <Card className="calculator-display">
+        <Card className="calculator-display w-full sm:w-auto">
           <CardContent className="py-2 px-4">
             <div className="font-mono text-sm animate-lcd-blink">
               <div className="text-xs text-calculator-dim">CURRENT PRICE</div>
-              <div>PRICE: {asset.price} AOB</div>
+              <div className="text-base sm:text-lg">PRICE: {asset.price} AOB</div>
               <div className={`text-xs ${asset.change24h >= 0 ? 'text-calculator-success' : 'text-calculator-error'}`}>
                 {asset.change24h >= 0 ? '↑' : '↓'}{Math.abs(asset.change24h)}%
               </div>
@@ -42,19 +42,19 @@ export default function Asset() {
           <CardHeader className="border-b border-calculator-text">
             <CardTitle className="font-lcd">Price Chart</CardTitle>
           </CardHeader>
-          <CardContent className="p-6">
-            <div className="h-[400px] calculator-display p-4">
+          <CardContent className="p-4 sm:p-6">
+            <div className="h-[300px] sm:h-[400px] calculator-display p-2 sm:p-4">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={mockChartData}>
                   <XAxis 
                     dataKey="time" 
                     stroke="currentColor" 
-                    fontSize={12}
+                    fontSize={10}
                     tickLine={false}
                   />
                   <YAxis 
                     stroke="currentColor"
-                    fontSize={12}
+                    fontSize={10}
                     tickLine={false}
                     axisLine={false}
                   />
@@ -76,44 +76,44 @@ export default function Asset() {
           <CardHeader className="border-b border-calculator-text">
             <CardTitle className="font-lcd">Trading Terminal</CardTitle>
           </CardHeader>
-          <CardContent className="p-6 space-y-6">
+          <CardContent className="p-4 sm:p-6 space-y-6">
             <div className="flex gap-2">
               <Button 
                 variant={orderType === 'buy' ? 'default' : 'outline'}
-                className="calculator-button flex-1"
+                className="calculator-button flex-1 text-sm sm:text-base py-5 sm:py-6"
                 onClick={() => setOrderType('buy')}
               >
                 [1] BUY
               </Button>
               <Button 
                 variant={orderType === 'sell' ? 'default' : 'outline'}
-                className="calculator-button flex-1"
+                className="calculator-button flex-1 text-sm sm:text-base py-5 sm:py-6"
                 onClick={() => setOrderType('sell')}
               >
                 [2] SELL
               </Button>
             </div>
 
-            <div className="calculator-display p-4 space-y-4">
+            <div className="calculator-display p-3 sm:p-4 space-y-4">
               <div className="space-y-2">
-                <div className="font-lcd">Amount ({asset.id})</div>
+                <div className="font-lcd text-sm sm:text-base">Amount ({asset.id})</div>
                 <input
                   type="number"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="calculator-display w-full p-2 font-mono"
+                  className="calculator-display w-full p-3 sm:p-4 font-mono text-base sm:text-lg"
                   placeholder="Enter amount..."
                 />
               </div>
 
               <div className="font-mono text-sm space-y-1">
-                <div>Price: {asset.price} AOB</div>
-                <div>Total: {amount ? Number(amount) * asset.price : 0} AOB</div>
-                <div className="text-calculator-dim">Supply: {asset.supply}/{asset.maxSupply}</div>
+                <div className="text-base">Price: {asset.price} AOB</div>
+                <div className="text-base">Total: {amount ? Number(amount) * asset.price : 0} AOB</div>
+                <div className="text-xs sm:text-sm text-calculator-dim">Supply: {asset.supply}/{asset.maxSupply}</div>
               </div>
             </div>
 
-            <Button className="calculator-button w-full">
+            <Button className="calculator-button w-full py-5 sm:py-6 text-sm sm:text-base">
               EXECUTE {orderType.toUpperCase()} [ENTER]
             </Button>
           </CardContent>
