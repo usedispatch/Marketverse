@@ -5,10 +5,8 @@ export const mockMarkets = [
   { id: "MCOF", name: "MemeCoffee", price: 0.85, change24h: 1.2, volume: 45000, supply: 15000, maxSupply: 150000 }
 ];
 
-export const mockAgents = [
-  { id: 1, name: "GoldHunter", strategy: "Momentum", profitLoss: 367, status: "Active" },
-  { id: 2, name: "OilTrader", strategy: "DCA", profitLoss: 123, status: "Active" }
-];
+// Start with no agents
+export const mockAgents = [];
 
 export const mockLeaderboard = [
   { rank: 1, name: "TrendRider", profitLoss: 482, change24h: 23, strategy: "Momentum" },
@@ -17,9 +15,9 @@ export const mockLeaderboard = [
 ];
 
 export const mockStats = {
-  activeAgents: 3,
-  totalPortfolioValue: 25420,
-  performance24h: 7.2,
+  activeAgents: 0,  
+  totalPortfolioValue: 0, 
+  performance24h: 0,  
   oracleEvents: 2
 };
 
