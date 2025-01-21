@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { agentTemplates, personalityTemplates, mockAgents, mockStats } from "@/lib/mock-data";
 import type { Agent } from "@/types/agent";
 import { useToast } from "@/hooks/use-toast";
+import { triggerConfetti } from "@/lib/utils";
 
 interface AgentCreationProps {
   onClose: () => void;
@@ -91,6 +92,9 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
       // Update mock stats
       mockStats.activeAgents = mockAgents.length;
       mockStats.totalPortfolioValue = (initialCapital ? parseInt(initialCapital, 10) : 10000) * mockAgents.length;
+
+      // Trigger confetti animation
+      triggerConfetti();
 
       toast({
         title: "Agent Created",
