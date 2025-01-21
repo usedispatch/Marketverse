@@ -8,8 +8,11 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { mockAgents } from "@/lib/mock-data";
+import { useLocation } from "wouter";
 
 export function AgentTable() {
+  const [, navigate] = useLocation();
+
   return (
     <Table>
       <TableHeader>
@@ -22,10 +25,14 @@ export function AgentTable() {
       </TableHeader>
       <TableBody>
         {mockAgents.map((agent) => (
-          <TableRow key={agent.id}>
+          <TableRow 
+            key={agent.id} 
+            className="cursor-pointer hover:bg-calculator-dim/10"
+            onClick={() => navigate(`/agent/${agent.id}`)}
+          >
             <TableCell className="font-medium">{agent.name}</TableCell>
             <TableCell>{agent.strategy}</TableCell>
-            <TableCell className={`text-right ${agent.profitLoss >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+            <TableCell className={`text-right ${agent.profitLoss >= 0 ? 'text-calculator-success' : 'text-calculator-error'}`}>
               {agent.profitLoss >= 0 ? '+' : '-'}{Math.abs(agent.profitLoss)}%
             </TableCell>
             <TableCell>

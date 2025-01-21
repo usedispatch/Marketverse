@@ -4,6 +4,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/layout/navbar";
 import Agents from "@/pages/agents";
+import AgentDetail from "@/pages/agent/[id]";
 import Markets from "@/pages/markets";
 import Asset from "@/pages/asset";
 import Leaderboard from "@/pages/leaderboard";
@@ -16,6 +17,7 @@ function Router() {
       <main className="container mx-auto px-4 py-8">
         <Switch>
           <Route path="/" component={Agents} />
+          <Route path="/agent/:id" component={AgentDetail} />
           <Route path="/markets" component={Markets} />
           <Route path="/markets/:id" component={Asset} />
           <Route path="/leaderboard" component={Leaderboard} />

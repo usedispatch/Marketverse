@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
-import { agentTemplates, personalityTemplates } from "@/lib/mock-data";
+import { agentTemplates, personalityTemplates, mockAgents, mockStats } from "@/lib/mock-data";
+import type { Agent } from "@/types/agent";
 
 const getRiskDescription = (value: number) => {
   if (value <= 2) return "Very Conservative - Minimal risk, focus on capital preservation";
@@ -60,6 +61,20 @@ export function AgentCreation() {
     setStep(prev => Math.max(prev - 1, 1));
   };
 
+  const createAgent = (): Agent => ({
+    id: mockAgents.length + 1,
+    name: "Agent " + (mockAgents.length + 1),
+    strategy: "Value Seeker",
+    profitLoss: 0,
+    status: "Active",
+    config: {
+      riskLevel,
+      frequencyLevel,
+      positionLevel,
+      personality: selectedPersonality
+    }
+  });
+
   return (
     <Card className="calculator-display lcd-container">
       <CardHeader className="border-b border-calculator-text">
@@ -107,7 +122,7 @@ export function AgentCreation() {
 
             <div className="calculator-display p-4">
               <Label className="font-lcd mb-2">PROMPT</Label>
-              <Textarea 
+              <Textarea
                 className="calculator-display mt-2 font-mono text-sm"
                 value={customPrompt}
                 onChange={(e) => setCustomPrompt(e.target.value)}
@@ -117,8 +132,8 @@ export function AgentCreation() {
             </div>
 
             <div className="pt-4">
-              <Button 
-                className="calculator-button w-full" 
+              <Button
+                className="calculator-button w-full"
                 onClick={nextStep}
                 disabled={!customPrompt.trim()}
               >
@@ -134,12 +149,12 @@ export function AgentCreation() {
               <div className="calculator-display p-4 space-y-4">
                 <div className="space-y-2">
                   <Label className="font-lcd">Risk Level: {riskLevel}/10</Label>
-                  <Slider 
-                    value={[riskLevel]} 
-                    onValueChange={([value]) => setRiskLevel(value)} 
-                    max={10} 
-                    step={1} 
-                    className="calculator-display" 
+                  <Slider
+                    value={[riskLevel]}
+                    onValueChange={([value]) => setRiskLevel(value)}
+                    max={10}
+                    step={1}
+                    className="calculator-display"
                   />
                   <div className="font-mono text-sm text-calculator-dim">
                     {getRiskDescription(riskLevel)}
@@ -148,12 +163,12 @@ export function AgentCreation() {
 
                 <div className="space-y-2">
                   <Label className="font-lcd">Trading Frequency: {frequencyLevel}/10</Label>
-                  <Slider 
-                    value={[frequencyLevel]} 
-                    onValueChange={([value]) => setFrequencyLevel(value)} 
-                    max={10} 
-                    step={1} 
-                    className="calculator-display" 
+                  <Slider
+                    value={[frequencyLevel]}
+                    onValueChange={([value]) => setFrequencyLevel(value)}
+                    max={10}
+                    step={1}
+                    className="calculator-display"
                   />
                   <div className="font-mono text-sm text-calculator-dim">
                     {getFrequencyDescription(frequencyLevel)}
@@ -162,12 +177,12 @@ export function AgentCreation() {
 
                 <div className="space-y-2">
                   <Label className="font-lcd">Position Size: {positionLevel}/10</Label>
-                  <Slider 
-                    value={[positionLevel]} 
-                    onValueChange={([value]) => setPositionLevel(value)} 
-                    max={10} 
-                    step={1} 
-                    className="calculator-display" 
+                  <Slider
+                    value={[positionLevel]}
+                    onValueChange={([value]) => setPositionLevel(value)}
+                    max={10}
+                    step={1}
+                    className="calculator-display"
                   />
                   <div className="font-mono text-sm text-calculator-dim">
                     {getPositionDescription(positionLevel)}
@@ -213,7 +228,20 @@ export function AgentCreation() {
               <Button variant="outline" className="calculator-button flex-1" onClick={prevStep}>
                 BACK [ESC]
               </Button>
-              <Button className="calculator-button flex-1">
+              <Button
+                className="calculator-button flex-1"
+                onClick={() => {
+                  const newAgent = createAgent();
+                  mockAgents.push(newAgent);
+                  mockStats.activeAgents = mockAgents.length;
+                  mockStats.totalPortfolioValue = 10000 * mockAgents.length;
+
+                  const closeButton = document.querySelector('[aria-label="Close"]');
+                  if (closeButton instanceof HTMLButtonElement) {
+                    closeButton.click();
+                  }
+                }}
+              >
                 DEPLOY [ENTER]
               </Button>
             </div>

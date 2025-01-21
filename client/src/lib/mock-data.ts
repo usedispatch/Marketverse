@@ -1,3 +1,5 @@
+import type { Agent, AgentTemplate, PersonalityTemplate } from "@/types/agent";
+
 export const mockMarkets = [
   { id: "MGLD", name: "MemeGold", price: 12.50, change24h: 5.2, volume: 125000, supply: 10000, maxSupply: 100000 },
   { id: "MOIL", name: "MemeOil", price: 2.31, change24h: 12.5, volume: 230000, supply: 50000, maxSupply: 500000 },
@@ -6,7 +8,7 @@ export const mockMarkets = [
 ];
 
 // Start with no agents
-export const mockAgents = [];
+export const mockAgents: Agent[] = [];
 
 export const mockLeaderboard = [
   { rank: 1, name: "TrendRider", profitLoss: 482, change24h: 23, strategy: "Momentum" },
@@ -21,14 +23,14 @@ export const mockStats = {
   oracleEvents: 2
 };
 
-export const agentTemplates = [
+export const agentTemplates: AgentTemplate[] = [
   { id: "dca", name: "DCA Trader", description: "Regular buys at fixed intervals" },
   { id: "momentum", name: "Momentum Hunter", description: "Follows market trends" },
   { id: "value", name: "Value Seeker", description: "Buys low, sells high" },
   { id: "trend", name: "Trend Follower", description: "Technical analysis based" }
 ];
 
-export const personalityTemplates = [
+export const personalityTemplates: PersonalityTemplate[] = [
   { 
     id: "cautious",
     name: "Cautious Analyst",
