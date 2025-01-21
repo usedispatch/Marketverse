@@ -7,10 +7,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { mockAgents } from "@/lib/mock-data";
 import { useLocation } from "wouter";
+import type { Agent } from "@/types/agent";
 
-export function AgentTable() {
+interface AgentTableProps {
+  agents: Agent[];
+}
+
+export function AgentTable({ agents }: AgentTableProps) {
   const [, navigate] = useLocation();
 
   return (
@@ -24,7 +28,7 @@ export function AgentTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {mockAgents.map((agent) => (
+        {agents.map((agent) => (
           <TableRow 
             key={agent.id} 
             className="cursor-pointer hover:bg-calculator-dim/10"

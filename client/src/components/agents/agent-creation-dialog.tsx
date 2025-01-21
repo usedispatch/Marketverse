@@ -4,7 +4,11 @@ import { Plus } from "lucide-react";
 import { AgentCreation } from "./agent-creation";
 import { useState } from "react";
 
-export function AgentCreationDialog() {
+interface AgentCreationDialogProps {
+  onAgentCreated?: () => void;
+}
+
+export function AgentCreationDialog({ onAgentCreated }: AgentCreationDialogProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -16,7 +20,12 @@ export function AgentCreationDialog() {
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl">
-        <AgentCreation onClose={() => setOpen(false)} />
+        <AgentCreation 
+          onClose={() => {
+            setOpen(false);
+            onAgentCreated?.();
+          }} 
+        />
       </DialogContent>
     </Dialog>
   );

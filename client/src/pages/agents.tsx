@@ -5,9 +5,18 @@ import { Bot, Wallet, TrendingUp, Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AgentCreationDialog } from "@/components/agents/agent-creation-dialog";
 import { Card, CardContent } from "@/components/ui/card";
+import { useState, useEffect } from "react";
 
 export default function Agents() {
-  const hasAgents = mockAgents.length > 0;
+  // Add local state to track agents and force re-renders
+  const [agents, setAgents] = useState(mockAgents);
+
+  // Update local state when mockAgents changes
+  useEffect(() => {
+    setAgents([...mockAgents]);
+  }, []);
+
+  const hasAgents = agents.length > 0;
 
   return (
     <div className="space-y-8">
@@ -41,7 +50,7 @@ export default function Agents() {
 
           <div>
             <h2 className="text-2xl font-bold mb-4 font-lcd">Active Agents</h2>
-            <AgentTable />
+            <AgentTable agents={agents} />
           </div>
         </>
       ) : (
@@ -56,7 +65,7 @@ export default function Agents() {
                 Create your first trading agent to start participating in the market.
               </p>
             </div>
-            <AgentCreationDialog />
+            <AgentCreationDialog onAgentCreated={() => setAgents([...mockAgents])} />
           </CardContent>
         </Card>
       )}
