@@ -7,6 +7,11 @@ import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
 import { agentTemplates, personalityTemplates, mockAgents, mockStats } from "@/lib/mock-data";
 import type { Agent } from "@/types/agent";
+import { useToast } from "@/hooks/use-toast";
+
+interface AgentCreationProps {
+  onClose: () => void;
+}
 
 const getRiskDescription = (value: number) => {
   if (value <= 2) return "Very Conservative - Minimal risk, focus on capital preservation";
@@ -32,13 +37,16 @@ const getPositionDescription = (value: number) => {
   return "Maximum - 25% of portfolio per trade";
 };
 
-export function AgentCreation() {
+export function AgentCreation({ onClose }: AgentCreationProps) {
+  const { toast } = useToast();
   const [step, setStep] = useState(1);
   const [selectedPersonality, setSelectedPersonality] = useState<string | null>(null);
   const [customPrompt, setCustomPrompt] = useState<string>("");
   const [riskLevel, setRiskLevel] = useState(5);
   const [frequencyLevel, setFrequencyLevel] = useState(5);
   const [positionLevel, setPositionLevel] = useState(5);
+  const [agentName, setAgentName] = useState("");
+  const [initialCapital, setInitialCapital] = useState("");
   const totalSteps = 4;
 
   const nextStep = () => {
@@ -63,7 +71,7 @@ export function AgentCreation() {
 
   const createAgent = (): Agent => ({
     id: mockAgents.length + 1,
-    name: "Agent " + (mockAgents.length + 1),
+    name: agentName || `Agent ${mockAgents.length + 1}`,
     strategy: "Value Seeker",
     profitLoss: 0,
     status: "Active",
@@ -74,6 +82,32 @@ export function AgentCreation() {
       personality: selectedPersonality
     }
   });
+
+  const handleDeploy = () => {
+    try {
+      const newAgent = createAgent();
+      mockAgents.push(newAgent);
+
+      // Update mock stats
+      mockStats.activeAgents = mockAgents.length;
+      mockStats.totalPortfolioValue = (initialCapital ? parseInt(initialCapital, 10) : 10000) * mockAgents.length;
+
+      toast({
+        title: "Agent Created",
+        description: `Successfully deployed ${newAgent.name}`,
+      });
+
+      // Close the dialog
+      onClose();
+    } catch (error) {
+      console.error('Error creating agent:', error);
+      toast({
+        title: "Error",
+        description: "Failed to create agent",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <Card className="calculator-display lcd-container">
@@ -204,12 +238,23 @@ export function AgentCreation() {
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label className="font-lcd">Agent Name</Label>
-                <Input className="calculator-display font-mono" placeholder="ENTER NAME" />
+                <Input
+                  className="calculator-display font-mono"
+                  placeholder="ENTER NAME"
+                  value={agentName}
+                  onChange={(e) => setAgentName(e.target.value)}
+                />
               </div>
 
               <div className="space-y-2">
                 <Label className="font-lcd">Initial Capital (AOB)</Label>
-                <Input type="number" className="calculator-display font-mono" placeholder="ENTER AMOUNT" />
+                <Input
+                  type="number"
+                  className="calculator-display font-mono"
+                  placeholder="ENTER AMOUNT"
+                  value={initialCapital}
+                  onChange={(e) => setInitialCapital(e.target.value)}
+                />
               </div>
 
               <div className="calculator-display p-4 mt-4">
@@ -230,17 +275,8 @@ export function AgentCreation() {
               </Button>
               <Button
                 className="calculator-button flex-1"
-                onClick={() => {
-                  const newAgent = createAgent();
-                  mockAgents.push(newAgent);
-                  mockStats.activeAgents = mockAgents.length;
-                  mockStats.totalPortfolioValue = 10000 * mockAgents.length;
-
-                  const closeButton = document.querySelector('[aria-label="Close"]');
-                  if (closeButton instanceof HTMLButtonElement) {
-                    closeButton.click();
-                  }
-                }}
+                onClick={handleDeploy}
+                disabled={!agentName.trim()}
               >
                 DEPLOY [ENTER]
               </Button>
