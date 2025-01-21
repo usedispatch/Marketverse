@@ -14,17 +14,17 @@ export default function AgentDetail() {
 
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
           <h1 className="text-3xl font-bold font-lcd">{agent.name}</h1>
           <p className="text-calculator-dim font-mono">Agent Control Panel</p>
         </div>
-        <div className="flex gap-4">
-          <Button variant="outline" className="calculator-button flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 w-full sm:w-auto">
+          <Button variant="outline" className="calculator-button flex items-center gap-2 w-full sm:w-auto">
             <Power className="w-4 h-4" />
             Deactivate Agent
           </Button>
-          <Button variant="destructive" className="calculator-button flex items-center gap-2">
+          <Button variant="destructive" className="calculator-button flex items-center gap-2 w-full sm:w-auto">
             <Wallet className="w-4 h-4" />
             Withdraw Funds
           </Button>
@@ -36,8 +36,8 @@ export default function AgentDetail() {
           <CardHeader className="border-b border-calculator-text">
             <CardTitle className="font-lcd">Performance</CardTitle>
           </CardHeader>
-          <CardContent className="p-6 space-y-4">
-            <div className="calculator-display p-4">
+          <CardContent className="p-4 sm:p-6 space-y-4">
+            <div className="calculator-display p-3 sm:p-4">
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-calculator-dim">Strategy</span>
@@ -67,8 +67,8 @@ export default function AgentDetail() {
           <CardHeader className="border-b border-calculator-text">
             <CardTitle className="font-lcd">Configuration</CardTitle>
           </CardHeader>
-          <CardContent className="p-6 space-y-4">
-            <div className="calculator-display p-4">
+          <CardContent className="p-4 sm:p-6 space-y-4">
+            <div className="calculator-display p-3 sm:p-4">
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span className="text-calculator-dim">Risk Level</span>

@@ -19,7 +19,7 @@ export function AgentCreationDialog({ onAgentCreated }: AgentCreationDialogProps
           New Agent
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-4xl">
+      <DialogContent className="w-[95vw] max-w-3xl p-0 sm:p-6">
         <AgentCreation 
           onClose={() => {
             setOpen(false);

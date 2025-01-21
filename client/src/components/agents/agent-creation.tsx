@@ -116,21 +116,21 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
   return (
     <Card className="calculator-display lcd-container">
       <CardHeader className="border-b border-calculator-text">
-        <CardTitle className="font-lcd text-xl">AGENT CREATION [{step}/{totalSteps}]</CardTitle>
+        <CardTitle className="font-lcd text-lg sm:text-xl">AGENT CREATION [{step}/{totalSteps}]</CardTitle>
       </CardHeader>
-      <CardContent id="agent-creation-content" className="calculator-transition">
+      <CardContent id="agent-creation-content" className="calculator-transition p-4">
         {step === 1 && (
-          <div className="space-y-6 pt-4 animate-calculator-slide">
-            <div className="grid gap-4 md:grid-cols-2">
+          <div className="space-y-4 pt-2 animate-calculator-slide">
+            <div className="grid gap-3 sm:grid-cols-2">
               {agentTemplates.map((template, index) => (
                 <Button
                   key={template.id}
                   variant="outline"
-                  className="calculator-button h-auto p-4 justify-start flex flex-col items-start"
+                  className="calculator-button h-auto p-3 justify-start flex flex-col items-start text-left"
                   onClick={nextStep}
                 >
-                  <div className="font-lcd">[{index + 1}] {template.name}</div>
-                  <div className="text-sm text-calculator-dim">{template.description}</div>
+                  <div className="font-lcd text-sm sm:text-base">[{index + 1}] {template.name}</div>
+                  <div className="text-xs sm:text-sm text-calculator-dim">{template.description}</div>
                 </Button>
               ))}
             </div>
@@ -138,13 +138,13 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
         )}
 
         {step === 2 && (
-          <div className="space-y-6 pt-4 animate-calculator-slide">
-            <div className="grid gap-4 md:grid-cols-2">
+          <div className="space-y-4 pt-2 animate-calculator-slide">
+            <div className="grid gap-3 sm:grid-cols-2">
               {personalityTemplates.map((personality, index) => (
                 <Button
                   key={personality.id}
                   variant="outline"
-                  className={`calculator-button h-auto p-4 justify-start flex flex-col items-start ${
+                  className={`calculator-button h-auto p-3 justify-start flex flex-col items-start text-left ${
                     selectedPersonality === personality.id ? "border-2" : ""
                   }`}
                   onClick={() => {
@@ -152,16 +152,16 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
                     setCustomPrompt(personality.prompt);
                   }}
                 >
-                  <div className="font-lcd">[{index + 1}] {personality.name}</div>
-                  <div className="text-sm text-calculator-dim">{personality.description}</div>
+                  <div className="font-lcd text-sm sm:text-base">[{index + 1}] {personality.name}</div>
+                  <div className="text-xs sm:text-sm text-calculator-dim">{personality.description}</div>
                 </Button>
               ))}
             </div>
 
-            <div className="calculator-display p-4">
-              <Label className="font-lcd mb-2">PROMPT</Label>
+            <div className="calculator-display p-3">
+              <Label className="font-lcd mb-2 text-sm sm:text-base">PROMPT</Label>
               <Textarea
-                className="calculator-display mt-2 font-mono text-sm"
+                className="calculator-display mt-2 font-mono text-xs sm:text-sm"
                 value={customPrompt}
                 onChange={(e) => setCustomPrompt(e.target.value)}
                 placeholder="Enter custom personality prompt..."
@@ -169,7 +169,7 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
               />
             </div>
 
-            <div className="pt-4">
+            <div className="pt-2">
               <Button
                 className="calculator-button w-full"
                 onClick={nextStep}
@@ -182,11 +182,11 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
         )}
 
         {step === 3 && (
-          <div className="space-y-6 pt-4 animate-calculator-slide">
-            <div className="space-y-6">
-              <div className="calculator-display p-4 space-y-4">
+          <div className="space-y-4 pt-2 animate-calculator-slide">
+            <div className="space-y-4">
+              <div className="calculator-display p-3 space-y-4">
                 <div className="space-y-2">
-                  <Label className="font-lcd">Risk Level: {riskLevel}/10</Label>
+                  <Label className="font-lcd text-sm sm:text-base">Risk Level: {riskLevel}/10</Label>
                   <Slider
                     value={[riskLevel]}
                     onValueChange={([value]) => setRiskLevel(value)}
@@ -194,13 +194,13 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
                     step={1}
                     className="calculator-display"
                   />
-                  <div className="font-mono text-sm text-calculator-dim">
+                  <div className="font-mono text-xs sm:text-sm text-calculator-dim">
                     {getRiskDescription(riskLevel)}
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="font-lcd">Trading Frequency: {frequencyLevel}/10</Label>
+                  <Label className="font-lcd text-sm sm:text-base">Trading Frequency: {frequencyLevel}/10</Label>
                   <Slider
                     value={[frequencyLevel]}
                     onValueChange={([value]) => setFrequencyLevel(value)}
@@ -208,13 +208,13 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
                     step={1}
                     className="calculator-display"
                   />
-                  <div className="font-mono text-sm text-calculator-dim">
+                  <div className="font-mono text-xs sm:text-sm text-calculator-dim">
                     {getFrequencyDescription(frequencyLevel)}
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="font-lcd">Position Size: {positionLevel}/10</Label>
+                  <Label className="font-lcd text-sm sm:text-base">Position Size: {positionLevel}/10</Label>
                   <Slider
                     value={[positionLevel]}
                     onValueChange={([value]) => setPositionLevel(value)}
@@ -222,14 +222,14 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
                     step={1}
                     className="calculator-display"
                   />
-                  <div className="font-mono text-sm text-calculator-dim">
+                  <div className="font-mono text-xs sm:text-sm text-calculator-dim">
                     {getPositionDescription(positionLevel)}
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-2">
               <Button className="calculator-button w-full" onClick={nextStep}>
                 NEXT [ENTER]
               </Button>
@@ -238,12 +238,12 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
         )}
 
         {step === 4 && (
-          <div className="space-y-6 pt-4 animate-calculator-slide">
-            <div className="space-y-4">
+          <div className="space-y-4 pt-2 animate-calculator-slide">
+            <div className="space-y-3">
               <div className="space-y-2">
-                <Label className="font-lcd">Agent Name</Label>
+                <Label className="font-lcd text-sm sm:text-base">Agent Name</Label>
                 <Input
-                  className="calculator-display font-mono"
+                  className="calculator-display font-mono text-sm"
                   placeholder="ENTER NAME"
                   value={agentName}
                   onChange={(e) => setAgentName(e.target.value)}
@@ -251,19 +251,19 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
               </div>
 
               <div className="space-y-2">
-                <Label className="font-lcd">Initial Capital (AOB)</Label>
+                <Label className="font-lcd text-sm sm:text-base">Initial Capital (AOB)</Label>
                 <Input
                   type="number"
-                  className="calculator-display font-mono"
+                  className="calculator-display font-mono text-sm"
                   placeholder="ENTER AMOUNT"
                   value={initialCapital}
                   onChange={(e) => setInitialCapital(e.target.value)}
                 />
               </div>
 
-              <div className="calculator-display p-4 mt-4">
-                <h4 className="font-lcd mb-2">CONFIGURATION</h4>
-                <ul className="text-sm space-y-1 font-mono text-calculator-dim">
+              <div className="calculator-display p-3 mt-3">
+                <h4 className="font-lcd mb-2 text-sm sm:text-base">CONFIGURATION</h4>
+                <ul className="text-xs sm:text-sm space-y-1 font-mono text-calculator-dim">
                   <li>TEMPLATE: VALUE SEEKER</li>
                   <li>PERSONALITY: {selectedPersonality?.toUpperCase() || "NOT SET"}</li>
                   <li>RISK: {getRiskDescription(riskLevel)}</li>
@@ -273,7 +273,7 @@ export function AgentCreation({ onClose }: AgentCreationProps) {
               </div>
             </div>
 
-            <div className="flex gap-2 pt-4">
+            <div className="flex gap-2 pt-2">
               <Button variant="outline" className="calculator-button flex-1" onClick={prevStep}>
                 BACK [ESC]
               </Button>
