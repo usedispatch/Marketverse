@@ -4,7 +4,7 @@ export const mockMarkets = [
   { 
     id: "MGLD", 
     name: "MemeGold", 
-    description: "Digital bling for the crypto kings. As reliable as your friend who says 'trust me bro' 🚀",
+    description: "💎 Digital gold for diamond hands, now with 100% more rocket emojis! 🚀",
     price: 12.50, 
     change24h: 5.2, 
     volume: 125000, 
@@ -14,7 +14,7 @@ export const mockMarkets = [
   { 
     id: "MOIL", 
     name: "MemeOil", 
-    description: "Smoother than butter, more volatile than your ex. Slippery when profitable! 🛢️",
+    description: "🛢️ More volatile than your crypto group chat during a dip! 📈",
     price: 2.31, 
     change24h: 12.5, 
     volume: 230000, 
@@ -24,7 +24,7 @@ export const mockMarkets = [
   { 
     id: "MCRN", 
     name: "MemeCorn", 
-    description: "It's honest work! Farm-to-wallet technology backed by digital scarecrows 🌽",
+    description: "🌽 It ain't much, but it's honest blockchain farming! 🚜",
     price: 1.15, 
     change24h: -3.1, 
     volume: 89000, 
@@ -34,7 +34,7 @@ export const mockMarkets = [
   { 
     id: "MCOF", 
     name: "MemeCoffee", 
-    description: "Wake up and smell the profits! Guaranteed to keep your portfolio up all night ☕",
+    description: "☕ The only token that keeps your portfolio up at 3 AM! ⚡",
     price: 0.85, 
     change24h: 1.2, 
     volume: 45000, 

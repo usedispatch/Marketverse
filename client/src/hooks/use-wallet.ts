@@ -17,6 +17,11 @@ export function useWallet() {
 
   const checkConnection = async () => {
     try {
+      // Check if ArConnect is available
+      if (typeof window.arweaveWallet === 'undefined') {
+        return;
+      }
+
       const isConnected = await window.arweaveWallet.isConnected();
       if (isConnected) {
         const address = await window.arweaveWallet.getActiveAddress();
@@ -24,6 +29,7 @@ export function useWallet() {
       }
     } catch (error) {
       console.error('Error checking wallet connection:', error);
+      // Silent fail on initial check - don't show error toast
     }
   };
 
