@@ -42,6 +42,7 @@ export default function Markets() {
 
                 <div className="flex items-center space-x-8">
                   <div className="text-right">
+                    <div className="text-xs text-calculator-dim font-mono">PRICE</div>
                     <div className="font-mono text-lg">{market.price} AOB</div>
                     <div className={`text-sm flex items-center justify-end ${
                       market.change24h >= 0 ? 'text-calculator-success' : 'text-calculator-error'

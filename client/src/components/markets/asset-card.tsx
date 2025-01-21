@@ -62,7 +62,7 @@ export function AssetCard({ asset }: AssetCardProps) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="calculator-display p-2">
-              <div className="text-xs text-calculator-dim mb-1">Price</div>
+              <div className="text-xs text-calculator-dim mb-1">Current Price</div>
               <div className="font-lcd text-xl">{asset.price} AOB</div>
             </div>
             <div className="calculator-display p-2">

@@ -26,6 +26,7 @@ export default function Asset() {
         <Card className="calculator-display">
           <CardContent className="py-2 px-4">
             <div className="font-mono text-sm animate-lcd-blink">
+              <div className="text-xs text-calculator-dim">CURRENT PRICE</div>
               <div>PRICE: {asset.price} AOB</div>
               <div className={`text-xs ${asset.change24h >= 0 ? 'text-calculator-success' : 'text-calculator-error'}`}>
                 {asset.change24h >= 0 ? '↑' : '↓'}{Math.abs(asset.change24h)}%
