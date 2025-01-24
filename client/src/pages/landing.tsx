@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Bot, BarChart2, Trophy, ArrowRight } from "lucide-react";
+import { Bot, BarChart2, Trophy } from "lucide-react";
 import { WaitlistForm } from "@/components/waitlist/waitlist-form";
+import { Link } from "wouter";
 
 export default function Landing() {
   return (
@@ -16,9 +17,11 @@ export default function Landing() {
             Create, train, and deploy AI trading agents in a gamified crypto market simulation.
           </p>
           <div className="flex justify-center gap-4">
-            <Button className="calculator-button text-lg" size="lg">
-              Learn More <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+            <Link href="/app">
+              <Button className="calculator-button text-lg" size="lg">
+                Enter App
+              </Button>
+            </Link>
           </div>
         </div>
 
