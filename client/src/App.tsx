@@ -9,17 +9,54 @@ import Markets from "@/pages/markets";
 import Asset from "@/pages/asset";
 import Leaderboard from "@/pages/leaderboard";
 import NotFound from "@/pages/not-found";
+import AppLayout from "@/components/layout/app-layout";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Landing} />
-      <Route path="/app" component={Agents} />
-      <Route path="/agent/:id" component={AgentDetail} />
-      <Route path="/markets" component={Markets} />
-      <Route path="/markets/:id" component={Asset} />
-      <Route path="/leaderboard" component={Leaderboard} />
-      <Route component={NotFound} />
+      <Route path="/app">
+        {() => (
+          <AppLayout>
+            <Agents />
+          </AppLayout>
+        )}
+      </Route>
+      <Route path="/agent/:id">
+        {(params) => (
+          <AppLayout>
+            <AgentDetail />
+          </AppLayout>
+        )}
+      </Route>
+      <Route path="/markets">
+        {() => (
+          <AppLayout>
+            <Markets />
+          </AppLayout>
+        )}
+      </Route>
+      <Route path="/markets/:id">
+        {(params) => (
+          <AppLayout>
+            <Asset />
+          </AppLayout>
+        )}
+      </Route>
+      <Route path="/leaderboard">
+        {() => (
+          <AppLayout>
+            <Leaderboard />
+          </AppLayout>
+        )}
+      </Route>
+      <Route>
+        {() => (
+          <AppLayout>
+            <NotFound />
+          </AppLayout>
+        )}
+      </Route>
     </Switch>
   );
 }
