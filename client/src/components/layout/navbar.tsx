@@ -23,9 +23,9 @@ export default function Navbar() {
           Markets
         </Button>
       </Link>
-      <Link href="/">
+      <Link href="/app">
         <Button 
-          variant={location === "/" ? "secondary" : "ghost"}
+          variant={location === "/app" ? "secondary" : "ghost"}
           className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
         >
           <Bot className="w-4 h-4" />
