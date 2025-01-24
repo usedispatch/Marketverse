@@ -6,67 +6,73 @@ import { WaitlistForm } from "@/components/waitlist/waitlist-form";
 export default function Landing() {
   return (
     <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-12 space-y-16">
+      <main className="container mx-auto px-4 py-12 space-y-20">
         {/* Hero Section */}
-        <div className="text-center space-y-6">
-          <h1 className="text-4xl sm:text-6xl font-bold font-lcd bg-gradient-to-r from-calculator-text to-calculator-highlight bg-clip-text text-transparent">
+        <div className="text-center space-y-8">
+          <h1 className="text-4xl sm:text-7xl font-bold font-lcd bg-gradient-to-r from-calculator-text to-calculator-highlight bg-clip-text text-transparent">
             Marketverse
           </h1>
-          <p className="text-lg sm:text-xl text-calculator-dim font-mono max-w-2xl mx-auto">
+          <p className="text-xl sm:text-2xl text-calculator-dim font-mono max-w-3xl mx-auto leading-relaxed">
             Create, train, and deploy AI trading agents in a gamified crypto market simulation.
           </p>
           <div className="flex justify-center gap-4">
-            <Button className="calculator-button" size="lg">
-              Learn More <ArrowRight className="ml-2 h-4 w-4" />
+            <Button className="calculator-button text-lg" size="lg">
+              Learn More <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
 
         {/* Features */}
-        <div className="grid gap-8 md:grid-cols-3">
-          <Card className="calculator-display lcd-container">
-            <CardContent className="p-6 text-center space-y-4">
-              <div className="w-12 h-12 rounded-full bg-calculator-dim/10 flex items-center justify-center mx-auto">
-                <Bot className="h-6 w-6 text-calculator-text" />
+        <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+          <Card className="calculator-display lcd-container border-2 hover:border-calculator-highlight/50 transition-colors">
+            <CardContent className="p-8 text-center space-y-6">
+              <div className="w-16 h-16 rounded-full bg-calculator-dim/10 flex items-center justify-center mx-auto">
+                <Bot className="h-8 w-8 text-calculator-text" />
               </div>
-              <h3 className="text-xl font-lcd">AI Agents</h3>
-              <p className="text-calculator-dim font-mono">
-                Create and customize your own trading agents with unique personalities and strategies
-              </p>
+              <div className="space-y-4">
+                <h3 className="text-2xl font-lcd">AI Agents</h3>
+                <p className="text-calculator-dim font-mono text-lg leading-relaxed">
+                  Create and customize your own trading agents with unique personalities and strategies
+                </p>
+              </div>
             </CardContent>
           </Card>
-          
-          <Card className="calculator-display lcd-container">
-            <CardContent className="p-6 text-center space-y-4">
-              <div className="w-12 h-12 rounded-full bg-calculator-dim/10 flex items-center justify-center mx-auto">
-                <BarChart2 className="h-6 w-6 text-calculator-text" />
+
+          <Card className="calculator-display lcd-container border-2 hover:border-calculator-highlight/50 transition-colors">
+            <CardContent className="p-8 text-center space-y-6">
+              <div className="w-16 h-16 rounded-full bg-calculator-dim/10 flex items-center justify-center mx-auto">
+                <BarChart2 className="h-8 w-8 text-calculator-text" />
               </div>
-              <h3 className="text-xl font-lcd">Market Simulation</h3>
-              <p className="text-calculator-dim font-mono">
-                Trade in a realistic market environment with dynamic price movements and order books
-              </p>
+              <div className="space-y-4">
+                <h3 className="text-2xl font-lcd">Market Simulation</h3>
+                <p className="text-calculator-dim font-mono text-lg leading-relaxed">
+                  Trade in a realistic market environment with dynamic price movements and order books
+                </p>
+              </div>
             </CardContent>
           </Card>
-          
-          <Card className="calculator-display lcd-container">
-            <CardContent className="p-6 text-center space-y-4">
-              <div className="w-12 h-12 rounded-full bg-calculator-dim/10 flex items-center justify-center mx-auto">
-                <Trophy className="h-6 w-6 text-calculator-text" />
+
+          <Card className="calculator-display lcd-container border-2 hover:border-calculator-highlight/50 transition-colors">
+            <CardContent className="p-8 text-center space-y-6">
+              <div className="w-16 h-16 rounded-full bg-calculator-dim/10 flex items-center justify-center mx-auto">
+                <Trophy className="h-8 w-8 text-calculator-text" />
               </div>
-              <h3 className="text-xl font-lcd">Compete & Earn</h3>
-              <p className="text-calculator-dim font-mono">
-                Climb the leaderboard and earn rewards based on your agents' performance
-              </p>
+              <div className="space-y-4">
+                <h3 className="text-2xl font-lcd">Compete & Earn</h3>
+                <p className="text-calculator-dim font-mono text-lg leading-relaxed">
+                  Climb the leaderboard and earn rewards based on your agents' performance
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>
 
         {/* Waitlist Section */}
-        <div className="max-w-xl mx-auto">
-          <Card className="calculator-display lcd-container">
-            <CardContent className="p-6 space-y-4">
-              <h2 className="text-2xl font-lcd text-center">Join the Waitlist</h2>
-              <p className="text-calculator-dim font-mono text-center mb-6">
+        <div className="max-w-2xl mx-auto">
+          <Card className="calculator-display lcd-container border-2">
+            <CardContent className="p-8 space-y-6">
+              <h2 className="text-3xl font-lcd text-center">Join the Waitlist</h2>
+              <p className="text-calculator-dim font-mono text-xl text-center mb-8">
                 Be among the first to experience the future of algorithmic trading.
               </p>
               <WaitlistForm />
