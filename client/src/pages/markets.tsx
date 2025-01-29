@@ -13,13 +13,13 @@ export default function Markets() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
           <h1 className="text-2xl sm:text-3xl font-bold font-lcd">Meme Markets</h1>
-          <p className="text-calculator-dim font-mono text-sm sm:text-base">Select an asset to trade</p>
+          <p className="text-calculator-dim font-mono text-sm sm:text-base font-medium tracking-tight">Select an asset to trade</p>
         </div>
         <Card className="calculator-display w-full sm:w-auto">
           <CardContent className="py-2 px-4">
             <div className="font-mono text-sm">
-              <div>SEASON 1: WEEK 3</div>
-              <div className="text-calculator-dim text-xs">2D 14H LEFT</div>
+              <div className="font-medium">SEASON 1: WEEK 3</div>
+              <div className="text-calculator-dim text-sm font-medium">2D 14H LEFT</div>
             </div>
           </CardContent>
         </Card>
@@ -37,13 +37,15 @@ export default function Markets() {
               <div className="flex flex-col space-y-4">
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
-                    <div className="font-lcd text-base sm:text-lg">{market.name}</div>
-                    <div className="text-xs text-calculator-dim font-mono">{market.id}</div>
-                    <div className="text-sm text-calculator-dim font-mono mt-1">{market.description}</div>
+                    <div className="font-lcd text-base sm:text-lg font-medium">{market.name}</div>
+                    <div className="text-sm text-calculator-dim font-mono font-medium">{market.id}</div>
+                    <div className="text-sm text-calculator-dim font-mono font-medium tracking-tight leading-relaxed mt-1">
+                      {market.description}
+                    </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-xs text-calculator-dim font-mono">PRICE</div>
-                    <div className="font-mono text-base sm:text-lg">{market.price} AOB</div>
+                    <div className="text-sm text-calculator-dim font-mono font-medium">PRICE</div>
+                    <div className="font-mono text-base sm:text-lg font-medium">{market.price} AOB</div>
                     <div className={`text-sm flex items-center justify-end ${
                       market.change24h >= 0 ? 'text-calculator-success' : 'text-calculator-error'
                     }`}>
@@ -58,16 +60,16 @@ export default function Markets() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                  <div className="text-left text-calculator-dim font-mono text-sm w-full sm:w-auto">
+                  <div className="text-left text-calculator-dim font-mono text-sm font-medium w-full sm:w-auto">
                     <div>Vol: {(market.volume / 1000).toFixed(1)}K</div>
-                    <div className="text-xs">Supply: {market.supply}/{market.maxSupply}</div>
+                    <div className="text-sm">Supply: {market.supply}/{market.maxSupply}</div>
                   </div>
 
                   <div className="flex gap-2 w-full sm:w-auto">
-                    <Button className="calculator-button flex-1 sm:flex-initial py-5 sm:py-6">
+                    <Button className="calculator-button flex-1 sm:flex-initial py-5 sm:py-6 font-medium">
                       BUY
                     </Button>
-                    <Button variant="outline" className="calculator-button flex-1 sm:flex-initial py-5 sm:py-6">
+                    <Button variant="outline" className="calculator-button flex-1 sm:flex-initial py-5 sm:py-6 font-medium">
                       SELL
                     </Button>
                   </div>
