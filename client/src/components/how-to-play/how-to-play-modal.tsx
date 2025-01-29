@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,16 +10,25 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Link } from "wouter";
+import { mockAgents } from "@/lib/mock-data";
 
 interface HowToPlayModalProps {
   trigger?: React.ReactNode;
 }
 
 export function HowToPlayModal({ trigger }: HowToPlayModalProps) {
+  const [open, setOpen] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
+  // Auto-open when there are no agents
+  useEffect(() => {
+    if (mockAgents.length === 0) {
+      setOpen(true);
+    }
+  }, []);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         {trigger || (
           <Button variant="outline" className="calculator-button">
@@ -87,6 +96,7 @@ export function HowToPlayModal({ trigger }: HowToPlayModalProps) {
             <Button 
               className="calculator-button w-full" 
               disabled={!agreed}
+              onClick={() => setOpen(false)}
             >
               Start Trading [ENTER]
             </Button>

@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BarChart2, Bot, Trophy, Wallet, Menu } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { AgentCreationDialog } from "@/components/agents/agent-creation-dialog";
+import { HowToPlayModal } from "@/components/how-to-play/how-to-play-modal";
 import { useWallet } from "@/hooks/use-wallet";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
@@ -41,6 +42,16 @@ export default function Navbar() {
           Leaderboard
         </Button>
       </Link>
+      <HowToPlayModal 
+        trigger={
+          <Button 
+            variant="ghost" 
+            className="text-calculator-dim hover:text-calculator-text hover:bg-transparent w-full md:w-auto justify-start md:justify-center text-sm"
+          >
+            [How to Play]
+          </Button>
+        } 
+      />
     </>
   );
 
