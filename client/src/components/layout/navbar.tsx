@@ -49,7 +49,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-4 md:space-x-8">
           <Link href="/">
-            <span className="text-xl font-bold font-mono cursor-pointer tracking-tight">Marketverse_</span>
+            <span className="text-xl font-normal font-mono cursor-pointer tracking-tight">Marketverse_</span>
           </Link>
 
           {/* Desktop Navigation */}
