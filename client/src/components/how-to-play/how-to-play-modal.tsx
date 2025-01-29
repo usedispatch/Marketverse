@@ -20,12 +20,18 @@ export function HowToPlayModal({ trigger }: HowToPlayModalProps) {
   const [open, setOpen] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
-  // Auto-open when there are no agents
+  // Auto-open when there are no agents and hasn't been shown before
   useEffect(() => {
-    if (mockAgents.length === 0) {
+    const hasSeenTutorial = localStorage.getItem('hasSeenTutorial');
+    if (mockAgents.length === 0 && !hasSeenTutorial) {
       setOpen(true);
     }
   }, []);
+
+  const handleClose = () => {
+    setOpen(false);
+    localStorage.setItem('hasSeenTutorial', 'true');
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -96,7 +102,7 @@ export function HowToPlayModal({ trigger }: HowToPlayModalProps) {
             <Button 
               className="calculator-button w-full" 
               disabled={!agreed}
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
             >
               Start Trading [ENTER]
             </Button>
