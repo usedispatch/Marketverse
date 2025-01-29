@@ -17,18 +17,19 @@
   }
 
   html {
-    font-family: "VT323", "Share Tech Mono", monospace;
-    -webkit-font-smoothing: none;
-    -moz-osx-font-smoothing: unset;
+    font-family: "Source Code Pro", monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-calculator-bg text-calculator-text font-mono;
-    image-rendering: pixelated;
+    @apply bg-calculator-bg text-calculator-text;
+    font-family: "Source Code Pro", monospace;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-lcd;
+    font-family: "Source Code Pro", monospace;
+    font-weight: 600;
   }
 
   .lcd-container {
@@ -38,11 +39,45 @@
 
 @layer components {
   .calculator-button {
-    @apply bg-calculator-bg border border-calculator-text hover:bg-calculator-dim 
-           transition-colors duration-100 font-lcd uppercase;
+    @apply bg-calculator-bg border border-calculator-text hover:bg-calculator-dim/10
+           transition-colors duration-100 uppercase font-semibold;
   }
 
   .calculator-display {
-    @apply bg-calculator-bg border border-calculator-text p-4 font-lcd;
+    @apply bg-calculator-bg border border-calculator-text p-4;
   }
+}
+
+/* Terminal-style animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-lcd-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes lcd-step {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-calculator-step {
+  animation: lcd-step 0.1s ease-in-out;
+}
+
+@keyframes lcd-slide {
+  from { 
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-calculator-slide {
+  animation: lcd-slide 0.2s ease-out;
 }
