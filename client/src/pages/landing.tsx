@@ -13,12 +13,12 @@ export default function Landing() {
           <h1 className="text-4xl sm:text-7xl font-bold font-lcd bg-gradient-to-r from-calculator-text to-calculator-highlight bg-clip-text text-transparent">
             Marketverse
           </h1>
-          <p className="text-xl sm:text-2xl text-calculator-dim font-mono font-semibold tracking-tight leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl sm:text-2xl text-calculator-dim font-mono max-w-3xl mx-auto leading-relaxed">
             Create, train, and deploy AI trading agents in a gamified crypto market simulation.
           </p>
           <div className="flex justify-center gap-4">
             <Link href="/app">
-              <Button className="calculator-button text-lg font-mono" size="lg">
+              <Button className="calculator-button text-lg" size="lg">
                 Enter App
               </Button>
             </Link>
@@ -34,7 +34,7 @@ export default function Landing() {
               </div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-lcd">AI Agents</h3>
-                <p className="text-calculator-dim font-mono text-lg tracking-tight leading-relaxed">
+                <p className="text-calculator-dim font-mono text-lg leading-relaxed">
                   Create and customize your own trading agents with unique personalities and strategies
                 </p>
               </div>
@@ -48,7 +48,7 @@ export default function Landing() {
               </div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-lcd">Market Simulation</h3>
-                <p className="text-calculator-dim font-mono text-lg tracking-tight leading-relaxed">
+                <p className="text-calculator-dim font-mono text-lg leading-relaxed">
                   Trade in a realistic market environment with dynamic price movements and order books
                 </p>
               </div>
@@ -62,7 +62,7 @@ export default function Landing() {
               </div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-lcd">Compete & Earn</h3>
-                <p className="text-calculator-dim font-mono text-lg tracking-tight leading-relaxed">
+                <p className="text-calculator-dim font-mono text-lg leading-relaxed">
                   Climb the leaderboard and earn rewards based on your agents' performance
                 </p>
               </div>
@@ -75,7 +75,7 @@ export default function Landing() {
           <Card className="calculator-display lcd-container border-2">
             <CardContent className="p-8 space-y-6">
               <h2 className="text-3xl font-lcd text-center">Join the Waitlist</h2>
-              <p className="text-calculator-dim font-mono text-xl tracking-tight leading-relaxed text-center mb-8">
+              <p className="text-calculator-dim font-mono text-xl text-center mb-8">
                 Be among the first to experience the future of algorithmic trading.
               </p>
               <WaitlistForm />

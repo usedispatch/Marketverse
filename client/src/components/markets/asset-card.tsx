@@ -21,7 +21,7 @@ export function AssetCard({ asset }: AssetCardProps) {
     <Card className="calculator-display lcd-container">
       <CardHeader className="border-b border-calculator-text p-3 sm:p-4">
         <CardTitle className="font-lcd text-sm sm:text-base flex justify-between items-center">
-          <span className="font-medium">{asset.name} ({asset.id})</span>
+          <span>{asset.name} ({asset.id})</span>
           <span className={`text-xs sm:text-sm flex items-center ${asset.change24h >= 0 ? 'text-calculator-success' : 'text-calculator-error'}`}>
             {asset.change24h >= 0 ? (
               <ArrowUpRight className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
@@ -40,12 +40,12 @@ export function AssetCard({ asset }: AssetCardProps) {
                 <XAxis 
                   dataKey="time" 
                   stroke="currentColor" 
-                  fontSize={11}
+                  fontSize={10}
                   tickLine={false}
                 />
                 <YAxis 
                   stroke="currentColor"
-                  fontSize={11}
+                  fontSize={10}
                   tickLine={false}
                   axisLine={false}
                 />
@@ -62,25 +62,25 @@ export function AssetCard({ asset }: AssetCardProps) {
 
           <div className="grid grid-cols-2 gap-2 sm:gap-4">
             <div className="calculator-display p-2">
-              <div className="text-sm text-calculator-dim font-medium mb-1">Current Price</div>
-              <div className="font-lcd text-sm sm:text-xl font-medium">{asset.price} AOB</div>
+              <div className="text-xs text-calculator-dim mb-1">Current Price</div>
+              <div className="font-lcd text-sm sm:text-xl">{asset.price} AOB</div>
             </div>
             <div className="calculator-display p-2">
-              <div className="text-sm text-calculator-dim font-medium mb-1">Volume</div>
-              <div className="font-lcd text-sm sm:text-xl font-medium">{(asset.volume / 1000).toFixed(1)}K</div>
+              <div className="text-xs text-calculator-dim mb-1">Volume</div>
+              <div className="font-lcd text-sm sm:text-xl">{(asset.volume / 1000).toFixed(1)}K</div>
             </div>
           </div>
 
           <div className="calculator-display p-2">
-            <div className="text-sm text-calculator-dim font-medium mb-1">Supply</div>
-            <div className="font-mono text-sm sm:text-base font-medium">{asset.supply}/{asset.maxSupply}</div>
+            <div className="text-xs text-calculator-dim mb-1">Supply</div>
+            <div className="font-mono text-xs sm:text-sm">{asset.supply}/{asset.maxSupply}</div>
           </div>
 
           <div className="flex gap-2">
-            <Button className="calculator-button flex-1 py-4 sm:py-5 text-sm font-medium">
+            <Button className="calculator-button flex-1 py-4 sm:py-5 text-xs sm:text-sm">
               [1] BUY
             </Button>
-            <Button variant="outline" className="calculator-button flex-1 py-4 sm:py-5 text-sm font-medium">
+            <Button variant="outline" className="calculator-button flex-1 py-4 sm:py-5 text-xs sm:text-sm">
               [2] SELL
             </Button>
           </div>

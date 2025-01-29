@@ -6,10 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // Use JetBrains Mono as the primary font
-        sans: ["JetBrains Mono", "monospace"],
-        mono: ["JetBrains Mono", "monospace"],
-        lcd: ["JetBrains Mono", "monospace"],
+        mono: ["VT323", "Monaco", "Lucida Console", "monospace"],
+        lcd: ["Share Tech Mono", "VT323", "Monaco", "monospace"],
       },
       colors: {
         calculator: {
