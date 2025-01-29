@@ -17,7 +17,7 @@ export default function Navbar() {
       <Link href="/markets">
         <Button 
           variant={location === "/markets" ? "secondary" : "ghost"}
-          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
+          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center font-mono text-base"
         >
           <BarChart2 className="w-4 h-4" />
           Markets
@@ -26,7 +26,7 @@ export default function Navbar() {
       <Link href="/app">
         <Button 
           variant={location === "/app" ? "secondary" : "ghost"}
-          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
+          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center font-mono text-base"
         >
           <Bot className="w-4 h-4" />
           Agents
@@ -35,7 +35,7 @@ export default function Navbar() {
       <Link href="/leaderboard">
         <Button 
           variant={location === "/leaderboard" ? "secondary" : "ghost"}
-          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
+          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center font-mono text-base"
         >
           <Trophy className="w-4 h-4" />
           Leaderboard
@@ -80,13 +80,13 @@ export default function Navbar() {
               <>
                 <AgentCreationDialog />
                 <div className="flex items-center space-x-2">
-                  <Button variant="outline" className="calculator-button hidden sm:flex items-center gap-2">
+                  <Button variant="outline" className="calculator-button hidden sm:flex items-center gap-2 font-mono">
                     <Wallet className="w-4 h-4" />
                     {balance.toLocaleString()} AOB
                   </Button>
                   <Button 
                     variant="ghost" 
-                    className="calculator-button text-xs text-calculator-dim"
+                    className="calculator-button text-xs text-calculator-dim font-mono"
                     onClick={disconnect}
                   >
                     {address?.slice(0, 6)}...{address?.slice(-4)} [X]
@@ -94,7 +94,7 @@ export default function Navbar() {
                 </div>
               </>
             ) : (
-              <Button onClick={connect} className="calculator-button flex items-center gap-2">
+              <Button onClick={connect} className="calculator-button flex items-center gap-2 font-mono">
                 <Wallet className="w-4 h-4" />
                 Connect Wallet
               </Button>
