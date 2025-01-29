@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Bot, BarChart2, Trophy } from "lucide-react";
 import { WaitlistForm } from "@/components/waitlist/waitlist-form";
+import { HowToPlayModal } from "@/components/how-to-play/how-to-play-modal";
 import { Link } from "wouter";
 
 export default function Landing() {
@@ -22,6 +23,7 @@ export default function Landing() {
                 Enter App_
               </Button>
             </Link>
+            <HowToPlayModal />
           </div>
         </div>
 
