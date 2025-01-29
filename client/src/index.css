@@ -4,79 +4,45 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 120 100% 50%;
-
-    --muted: 120 50% 27%;
-    --muted-foreground: 120 100% 50%;
-
-    --accent: 120 100% 27%;
-    --accent-foreground: 120 100% 50%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 0%;
-
-    --success: 120 100% 50%;
-    --success-foreground: 0 0% 0%;
-
-    --border: 120 100% 50%;
-    --ring: 120 100% 50%;
+    --calculator-bg: #FFFFFF;
+    --calculator-text: #000000;
+    --calculator-dim: #666666;
+    --calculator-highlight: #000000;
+    --calculator-error: #FF0000;
+    --calculator-success: #008000;
   }
 
   * {
-    @apply border-border;
+    @apply border-calculator-text;
   }
 
   html {
-    font-family: "JetBrains Mono", monospace;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: "VT323", "Share Tech Mono", monospace;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: unset;
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "liga" 0;
+    @apply bg-calculator-bg text-calculator-text font-mono;
+    image-rendering: pixelated;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-mono;
+    @apply font-lcd;
+  }
+
+  .lcd-container {
+    @apply lcd-frame lcd-scan-line;
   }
 }
 
 @layer components {
-  .terminal-button {
-    @apply bg-background border border-border hover:bg-muted/20 
-           transition-colors duration-100 font-mono uppercase;
+  .calculator-button {
+    @apply bg-calculator-bg border border-calculator-text hover:bg-calculator-dim 
+           transition-colors duration-100 font-lcd uppercase;
   }
 
-  .terminal-display {
-    @apply bg-background border border-border p-4 font-mono;
+  .calculator-display {
+    @apply bg-calculator-bg border border-calculator-text p-4 font-lcd;
   }
-
-  .terminal-container {
-    @apply relative overflow-hidden;
-  }
-
-  .terminal-container::after {
-    @apply content-[''] absolute top-0 left-0 w-full h-[2px] bg-foreground opacity-50;
-    animation: scan 2s linear infinite;
-  }
-
-  .cursor-blink {
-    animation: blink 1s step-end infinite;
-  }
-}
-
-@keyframes scan {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100%);
-  }
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
 }

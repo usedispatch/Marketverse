@@ -17,7 +17,7 @@ export default function Navbar() {
       <Link href="/markets">
         <Button 
           variant={location === "/markets" ? "secondary" : "ghost"}
-          className="terminal-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
+          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
         >
           <BarChart2 className="w-4 h-4" />
           Markets
@@ -26,7 +26,7 @@ export default function Navbar() {
       <Link href="/app">
         <Button 
           variant={location === "/app" ? "secondary" : "ghost"}
-          className="terminal-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
+          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
         >
           <Bot className="w-4 h-4" />
           Agents
@@ -35,7 +35,7 @@ export default function Navbar() {
       <Link href="/leaderboard">
         <Button 
           variant={location === "/leaderboard" ? "secondary" : "ghost"}
-          className="terminal-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
+          className="calculator-button flex items-center gap-2 w-full md:w-auto justify-start md:justify-center"
         >
           <Trophy className="w-4 h-4" />
           Leaderboard
@@ -49,7 +49,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center space-x-4 md:space-x-8">
           <Link href="/">
-            <span className="text-xl font-bold font-mono cursor-pointer">Marketverse</span>
+            <span className="text-xl font-bold font-lcd cursor-pointer">Marketverse</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -62,7 +62,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="outline" size="icon" className="terminal-button">
+              <Button variant="outline" size="icon" className="calculator-button">
                 <Menu className="h-4 w-4" />
               </Button>
             </SheetTrigger>
@@ -80,13 +80,13 @@ export default function Navbar() {
               <>
                 <AgentCreationDialog />
                 <div className="flex items-center space-x-2">
-                  <Button variant="outline" className="terminal-button hidden sm:flex items-center gap-2">
+                  <Button variant="outline" className="calculator-button hidden sm:flex items-center gap-2">
                     <Wallet className="w-4 h-4" />
                     {balance.toLocaleString()} AOB
                   </Button>
                   <Button 
                     variant="ghost" 
-                    className="terminal-button text-xs text-muted-foreground"
+                    className="calculator-button text-xs text-calculator-dim"
                     onClick={disconnect}
                   >
                     {address?.slice(0, 6)}...{address?.slice(-4)} [X]
@@ -94,7 +94,7 @@ export default function Navbar() {
                 </div>
               </>
             ) : (
-              <Button onClick={connect} className="terminal-button flex items-center gap-2">
+              <Button onClick={connect} className="calculator-button flex items-center gap-2">
                 <Wallet className="w-4 h-4" />
                 Connect Wallet
               </Button>
