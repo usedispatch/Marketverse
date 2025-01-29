@@ -6,11 +6,13 @@ import { Button } from "@/components/ui/button";
 import { AgentCreationDialog } from "@/components/agents/agent-creation-dialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { SeasonTimer } from "@/components/ui/season-timer";
+import { HowToPlayModal } from "@/components/how-to-play/how-to-play-modal";
 import { useState, useEffect } from "react";
 
 export default function Agents() {
   // Add local state to track agents and force re-renders
   const [agents, setAgents] = useState(mockAgents);
+  const [showHowToPlay, setShowHowToPlay] = useState(agents.length === 0);
 
   // Update local state when mockAgents changes
   useEffect(() => {
@@ -77,9 +79,18 @@ export default function Agents() {
                 Create your first trading agent to start participating in the market.
               </p>
             </div>
-            <AgentCreationDialog onAgentCreated={() => setAgents([...mockAgents])} />
+            <div className="flex flex-col sm:flex-row gap-4">
+              <AgentCreationDialog onAgentCreated={() => setAgents([...mockAgents])} />
+              <HowToPlayModal trigger={null} />
+            </div>
           </CardContent>
         </Card>
+      )}
+
+      {showHowToPlay && (
+        <HowToPlayModal 
+          trigger={<span className="hidden" />} 
+        />
       )}
     </div>
   );
