@@ -13,8 +13,8 @@ export default function Markets() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-2xl sm:text-3xl font-bold font-mono">Meme Markets</h1>
-          <p className="text-calculator-dim font-mono text-sm sm:text-base">Select an asset to trade</p>
+          <h1 className="text-3xl font-bold">Meme Markets</h1>
+          <p className="text-calculator-dim text-sm">Select an asset to trade</p>
         </div>
         <SeasonTimer />
       </div>
@@ -31,13 +31,13 @@ export default function Markets() {
               <div className="flex flex-col space-y-4">
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
-                    <div className="font-mono text-base sm:text-lg">{market.name}</div>
-                    <div className="text-xs text-calculator-dim font-mono">{market.id}</div>
-                    <div className="text-sm text-calculator-dim font-mono mt-1">{market.description}</div>
+                    <div className="text-base sm:text-lg font-bold">{market.name}</div>
+                    <div className="text-xs text-calculator-dim">{market.id}</div>
+                    <div className="text-sm text-calculator-dim mt-1">{market.description}</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-xs text-calculator-dim font-mono">PRICE</div>
-                    <div className="font-mono text-base sm:text-lg">{market.price} AOB</div>
+                    <div className="text-xs text-calculator-dim">PRICE</div>
+                    <div className="text-base sm:text-lg font-bold">{market.price} AOB</div>
                     <div className={`text-sm flex items-center justify-end ${
                       market.change24h >= 0 ? 'text-calculator-success' : 'text-calculator-error'
                     }`}>
@@ -52,7 +52,7 @@ export default function Markets() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                  <div className="text-left text-calculator-dim font-mono text-sm w-full sm:w-auto">
+                  <div className="text-left text-calculator-dim text-sm w-full sm:w-auto">
                     <div>Vol: {(market.volume / 1000).toFixed(1)}K</div>
                     <div className="text-xs">Supply: {market.supply}/{market.maxSupply}</div>
                   </div>
