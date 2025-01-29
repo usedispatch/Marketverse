@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { AgentCreationDialog } from "@/components/agents/agent-creation-dialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState, useEffect } from "react";
+import { SeasonTimer } from "@/components/ui/season-timer";
 
 export default function Agents() {
   // Add local state to track agents and force re-renders
@@ -21,10 +22,16 @@ export default function Agents() {
   return (
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <h1 className="text-3xl font-bold font-lcd">Agent Dashboard</h1>
-        {hasAgents && (
-          <AgentCreationDialog onAgentCreated={() => setAgents([...mockAgents])} />
-        )}
+        <div className="space-y-1">
+          <h1 className="text-2xl sm:text-3xl font-bold font-mono">Agent Dashboard</h1>
+          <p className="text-calculator-dim font-mono text-sm sm:text-base">Manage your trading agents</p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+          <SeasonTimer />
+          {hasAgents && (
+            <AgentCreationDialog onAgentCreated={() => setAgents([...mockAgents])} />
+          )}
+        </div>
       </div>
 
       {hasAgents ? (
@@ -54,7 +61,7 @@ export default function Agents() {
           </div>
 
           <div className="overflow-x-auto">
-            <h2 className="text-2xl font-bold mb-4 font-lcd">Active Agents</h2>
+            <h2 className="text-2xl font-bold mb-4 font-mono">Active Agents</h2>
             <AgentTable agents={agents} />
           </div>
         </>
@@ -65,7 +72,7 @@ export default function Agents() {
               <Bot className="w-6 sm:w-8 h-6 sm:h-8 text-calculator-dim" />
             </div>
             <div className="text-center space-y-2">
-              <h2 className="text-xl sm:text-2xl font-bold font-lcd">No Agents Yet</h2>
+              <h2 className="text-xl sm:text-2xl font-bold font-mono">No Agents Yet</h2>
               <p className="text-calculator-dim font-mono text-sm sm:text-base max-w-md px-4">
                 Create your first trading agent to start participating in the market.
               </p>

@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { useLocation } from "wouter";
+import { SeasonTimer } from "@/components/ui/season-timer";
 
 export default function Markets() {
   const [, navigate] = useLocation();
@@ -12,17 +13,10 @@ export default function Markets() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-2xl sm:text-3xl font-bold font-lcd">Meme Markets</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold font-mono">Meme Markets</h1>
           <p className="text-calculator-dim font-mono text-sm sm:text-base">Select an asset to trade</p>
         </div>
-        <Card className="calculator-display w-full sm:w-auto">
-          <CardContent className="py-2 px-4">
-            <div className="font-mono text-sm">
-              <div>SEASON 1: WEEK 3</div>
-              <div className="text-calculator-dim text-xs">2D 14H LEFT</div>
-            </div>
-          </CardContent>
-        </Card>
+        <SeasonTimer />
       </div>
 
       {/* Asset List */}
@@ -37,7 +31,7 @@ export default function Markets() {
               <div className="flex flex-col space-y-4">
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
-                    <div className="font-lcd text-base sm:text-lg">{market.name}</div>
+                    <div className="font-mono text-base sm:text-lg">{market.name}</div>
                     <div className="text-xs text-calculator-dim font-mono">{market.id}</div>
                     <div className="text-sm text-calculator-dim font-mono mt-1">{market.description}</div>
                   </div>

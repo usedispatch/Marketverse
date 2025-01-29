@@ -5,6 +5,7 @@ import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { mockMarkets, mockChartData } from "@/lib/mock-data";
 import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { useState } from "react";
+import { SeasonTimer } from "@/components/ui/season-timer";
 
 export default function Asset() {
   const { id } = useParams();
@@ -20,20 +21,10 @@ export default function Asset() {
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-2xl sm:text-3xl font-bold font-lcd">{asset.name} ({asset.id})</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold font-mono">{asset.name} ({asset.id})</h1>
           <p className="text-calculator-dim font-mono text-sm sm:text-base">{asset.description}</p>
         </div>
-        <Card className="calculator-display w-full sm:w-auto">
-          <CardContent className="py-2 px-4">
-            <div className="font-mono text-sm animate-lcd-blink">
-              <div className="text-xs text-calculator-dim">CURRENT PRICE</div>
-              <div className="text-base sm:text-lg">PRICE: {asset.price} AOB</div>
-              <div className={`text-xs ${asset.change24h >= 0 ? 'text-calculator-success' : 'text-calculator-error'}`}>
-                {asset.change24h >= 0 ? '↑' : '↓'}{Math.abs(asset.change24h)}%
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <SeasonTimer />
       </div>
 
       <div className="grid gap-8 lg:grid-cols-2">
